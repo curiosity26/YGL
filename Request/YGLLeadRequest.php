@@ -18,10 +18,9 @@ class YGLLeadRequest extends YGLRequest {
     private $property;
     private $id;
 
-    public function __construct($accessToken = FALSE, YGLProperty $property = NULL, $id = NULL) {
-        if (isset($accessToken)) {
-            $this->setAccessToken($accessToken);
-        }
+    public function __construct($clientToken = FALSE,
+                                YGLProperty $property = NULL, $id = NULL) {
+        parent::__construct($clientToken);
         if (isset($property)) {
             $this->setProperty($property);
             $this->id($id);

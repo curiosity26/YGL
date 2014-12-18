@@ -11,14 +11,14 @@
 // Test Password = password
 
 require_once __DIR__.'/../autoload.php';
-use \YGL\YGL;
+use \YGL\YGLClient;
 
 class YGLTest extends \PHPUnit_Framework_TestCase {
     private $accessToken = 'eWdsQXBpVGVzdDE6cGFzc3dvcmQ=';
     private $properties = array();
 
     public function testConnection() {
-        $ygl = new YGL($this->accessToken);
+        $ygl = new YGLClient($this->accessToken);
         $this->properties = $ygl->getProperties();
         $this->assertNotEquals(0, $this->properties->count());
     }

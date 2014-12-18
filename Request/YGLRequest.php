@@ -10,9 +10,10 @@ namespace YGL\Request;
 
 use YGL\Request\HttpRequest;
 use YGL\Response\YGLResponse;
+use YGL\YGLClient;
 
 class YGLRequest {
-    private $accessToken;
+    private $client;
     private $headers = array();
     private $url = 'https://www.youvegotleads.com/api/';
     private $function;
@@ -21,11 +22,17 @@ class YGLRequest {
     protected $page = 0;
     protected $filter;
 
-    public function __construct($accessToken = NULL) {
-        if (isset($accessToken)) {
-            $this->setAccessToken($accessToken);
+    public function __construct($clientToken = NULL) {
+        if (isset($accessToken) && is_string($clientToken)) {
+            // $clientToken is accessToken
+            $this->client = new YGLClient($clientToken);
         }
-        $this->headers['Host'] = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
+        elseif (isset($clientToken) && $clientToken instanceof YGLClient) {
+            $this->setClient($clientToken);
+        }
+
+        $this->headers['Host'] = isset($_SERVER['HTTP_HOST'])
+          ? $_SERVER['HTTP_HOST'] : 'localhost';
         $this->headers['Accept'] = 'application/json';
         $this->headers['Content-Type'] = 'application/json';
     }
@@ -33,6 +40,15 @@ class YGLRequest {
     public function setAccessToken($accessToken) {
         $this->accessToken = $accessToken;
         return $this;
+    }
+
+    public function setClient(YGLClient $client) {
+        $this->client = $client;
+        return $this;
+    }
+
+    public function getClient() {
+        return $this->client;
     }
 
     public function setBody($data) {
@@ -93,15 +109,18 @@ class YGLRequest {
     public function send() {
         $request = new \YGL\Request\HttpRequest(
             $this->build(),
-            isset($this->data) ? HttpRequest::$METHOD_POST : HttpRequest::$METHOD_GET,
+            isset($this->data) ? HttpRequest::$METHOD_POST
+              : HttpRequest::$METHOD_GET,
             $this->data,
             $this->headers
         );
 
-        if (isset($this->accessToken)) {
-            list($username, $password) = explode(':', base64_decode($this->accessToken));
-            $request->setHttpAuth(HttpRequest::$AUTH_BASIC, $username, $password);
+        if (strlen($this->client->getUsername()) > 0) {
+            $request->setHttpAuth(HttpRequest::$AUTH_BASIC,
+              $this->client->getUsername(),
+              $this->client->getPassword());
         }
+
         $response = $request->send();
         return new YGLResponse($response);
     }

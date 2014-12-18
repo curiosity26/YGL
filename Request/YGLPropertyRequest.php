@@ -13,8 +13,8 @@ use YGL\Properties\YGLPropertyCollection;
 class YGLPropertyRequest extends YGLRequest {
     protected $limit = 20;
 
-    public function __construct($accessToken = NULL, $id = NULL) {
-        parent::__construct($accessToken);
+    public function __construct($clientToken = NULL, $id = NULL) {
+        parent::__construct($clientToken);
         $this->id($id);
     }
 

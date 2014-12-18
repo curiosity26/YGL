@@ -51,7 +51,8 @@ class YGLJsonObject implements \JsonSerializable {
         );
     }
 
-    static protected function customProperty($className, $default = NULL, array $extra = array()) {
+    static protected function customProperty($className, $default = NULL,
+                                             array $extra = array()) {
         return array(
             'type' => '\\'.$className,
             'value' => $default
@@ -82,12 +83,15 @@ class YGLJsonObject implements \JsonSerializable {
         return self::customProperty('YGL\Leads\YGLContact', $default);
     }
 
-    static protected function residentProperty(YGLLeadResident $default = NULL) {
+    static protected function residentProperty(YGLLeadResident $default = NULL)
+    {
         return self::customProperty('YGL\Leads\YGLLeadResident', $default);
     }
 
-    static protected function referralSourceCollectionProperty(YGLReferralSourceCollection $default = NULL) {
-        return self::customProperty('YGL\Leads\YGLReferralSourceCollection', $default);
+    static protected function referralSourceCollectionProperty(
+      YGLReferralSourceCollection $default = NULL) {
+        return self::customProperty('YGL\Leads\YGLReferralSourceCollection',
+          $default);
     }
 
     static protected function notesProperty(YGLLeadNotes $default = NULL) {
@@ -127,10 +131,12 @@ class YGLJsonObject implements \JsonSerializable {
                     $this->_properties[$name]['value'] = $value == TRUE;
                     break;
                 case 'string':
-                    $this->_properties[$name]['value'] = substr($value, 0, $this->_properties[$name]['length']);
+                    $this->_properties[$name]['value'] = substr($value, 0,
+                      $this->_properties[$name]['length']);
                     break;
                 default:
-                    $this->_properties[$name]['value'] = $value instanceof $type ? $value : new $type($value);
+                    $this->_properties[$name]['value'] = $value instanceof $type
+                      ? $value : new $type($value);
                     break;
             }
         }
