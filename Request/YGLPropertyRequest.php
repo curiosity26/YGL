@@ -10,6 +10,7 @@ namespace YGL\Request;
 
 use ODataQuery\ODataResourceInterface;
 use ODataQuery\Pager\ODataQueryPager;
+use YGL\Properties\YGLProperty;
 use YGL\Properties\YGLPropertyCollection;
 
 class YGLPropertyRequest extends YGLRequest {
@@ -27,12 +28,22 @@ class YGLPropertyRequest extends YGLRequest {
     }
 
     public function send() {
-        $properties = new YGLPropertyCollection();
         $response = parent::send();
         if ($response->isSuccess()) {
-            $properties->collection = json_decode($response->getBody());
+            $body = json_decode($response->getBody());
+            if (is_array($body)) {
+                $properties = new YGLPropertyCollection($this->getClient(), $body);
+                // Currently, the default behavior of the API returns a single
+                // object which is converted to a YGLProperty. But if an instance
+                // would ever occur when the result is an array with one object,
+                // we would want that single object returned to conform to the
+                // standard behavior.
+                return $properties->count() > 0 ? $properties->rewind()
+                  : $properties->rewind()->current();
+            }
+            return new YGLProperty((array)$body, $this->getClient());
         }
 
-        return $properties;
+        return new YGLPropertyCollection();
     }
 } 

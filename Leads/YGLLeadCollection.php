@@ -9,14 +9,18 @@
 namespace YGL\Leads;
 
 
+use YGL\Collection\YGLCollection;
 use YGL\Interfaces\YGLLeadCollectionInterface;
 use YGL\YGLClient;
 
-class YGLLeadCollection implements YGLLeadCollectionInterface,\JsonSerializable, \Countable {
-    protected $collection = array();
-    private $client;
+class YGLLeadCollection extends YGLCollection implements YGLLeadCollectionInterface {
+    protected $client;
 
-    public function __construct(array $leads = array()) {
+    public function __construct(YGLClient $client = NULL, array $leads = array()) {
+        parent::__construct();
+        if (isset($client)) {
+            $this->setClient($client);
+        }
         $this->__set('collection', $leads);
     }
 
@@ -49,19 +53,23 @@ class YGLLeadCollection implements YGLLeadCollectionInterface,\JsonSerializable,
         return $this;
     }
 
-    public function count() {
-        return count($this->collection);
-    }
-
-    public function item($id) {
-        if (is_numeric($id) && !empty($this->collection[$id])) {
-            return $this->collection[$id];
+    public function offsetSet($offset, $value) {
+        if (isset($offset) && ($lead = $this->item($offset))) {
+            $this->collection[$offset] = $value;
         }
-        return FALSE;
-    }
+        else {
+            if ($value instanceof YGLLead) {
+                if (isset($this->client)) {
+                    $value->setClient($this->client);
+                }
 
-    public function JsonSerialize() {
-        return $this->collection;
+                $this->collection[$value->id] = $value;
+            }
+            else {
+                $lead = new YGLLead($value, $this->client);
+                $this->collection[$lead->id] = $lead;
+            }
+        }
     }
 
     public function __set($name, $value) {

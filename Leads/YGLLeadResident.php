@@ -24,7 +24,7 @@ class YGLLeadResident extends YGLJsonObject {
             'driving'       =>  self::integerProperty(),
             'eating'        =>  self::integerProperty(),
             'estimatedAdmitDate'    =>  self::datetimeProperty(),
-            'hair'          =>  self::datetimeProperty(),
+            'hair'          =>  self::integerProperty(),
             'hotButtons'    =>  self::stringProperty(1000),
             'isDiabetic'    =>  self::booleanProperty(),
             'laundry'       =>  self::integerProperty(),

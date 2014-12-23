@@ -8,14 +8,15 @@
 
 namespace YGL\Properties;
 
+use YGL\Collection\YGLCollection;
 use YGL\Interfaces\YGLPropertyCollectionInterface;
 use YGL\YGLClient;
 
-class YGLPropertyCollection implements  YGLPropertyCollectionInterface, \JsonSerializable, \Countable {
-    protected $collection = array();
+class YGLPropertyCollection extends YGLCollection implements  YGLPropertyCollectionInterface {
     protected $client;
 
-    public function __construct(array $properties = array(), YGLClient $client = NULL) {
+    public function __construct(YGLClient $client = NULL, array $properties = array()) {
+        parent::__construct();
         if (isset($client)) {
             $this->setClient($client);
         }
@@ -56,19 +57,23 @@ class YGLPropertyCollection implements  YGLPropertyCollectionInterface, \JsonSer
         return $this;
     }
 
-    public function count() {
-        return count($this->collection);
-    }
-
-    public function item($id) {
-        if (is_numeric($id) && !empty($this->collection[$id])) {
-            return $this->collection[$id];
+    public function offsetSet($offset, $value) {
+        if (isset($offset) && ($property = $this->item($offset))) {
+            $this->collection[$offset] = $value;
         }
-        return FALSE;
-    }
+        else {
+            if ($value instanceof YGLProperty) {
+                if (isset($this->client)) {
+                    $value->setClient($this->client);
+                }
 
-    public function JsonSerialize() {
-        return array_values($this->collection);
+                $this->collection[$value->id] = $value;
+            }
+            else {
+                $property = new YGLProperty($value, $this->client);
+                $this->collection[$property->id] = $property;
+            }
+        }
     }
 
     public function __set($name, $value) {

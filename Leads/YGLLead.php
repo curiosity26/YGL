@@ -9,11 +9,13 @@
 namespace YGL\Leads;
 
 
+use YGL\Properties\YGLProperty;
 use YGL\YGLClient;
 use YGL\YGLJsonObject;
 
 class YGLLead extends YGLJsonObject {
-    private $client;
+    protected $client;
+    protected $property;
 
     public function __construct(array $values = NULL, YGLClient $client = NULL) {
         if (isset($client)) {
@@ -29,6 +31,7 @@ class YGLLead extends YGLJsonObject {
             'budgetMin'         =>  self::integerProperty(),
             'budgetMax'         =>  self::integerProperty(),
             'callCenterId'      =>  self::stringProperty(),
+            'createdOn'         =>  self::datetimeProperty(),
             'dischargePlannerId'=>  self::integerProperty(),
             'familyStatusId'    =>  self::integerProperty(),
             'fundingType'       =>  self::integerProperty(),
@@ -57,6 +60,15 @@ class YGLLead extends YGLJsonObject {
         return $this->client;
     }
 
+    public function setProperty(YGLProperty $property) {
+        $this->property = $property;
+    }
+
+    public function getProperty() {
+        return $this->property;
+    }
+
+
     public function __get($name) {
         if ($name == 'id') {
             return $this->_properties['leadId']['value'];
@@ -69,8 +81,10 @@ class YGLLead extends YGLJsonObject {
     }
 
     public function __set($name, $value) {
-        if ($name == 'client' && $value instanceof YGLClient) {
-            $this->setClient($value);
+        if ($name == 'client') {
+            if ($value instanceof YGLClient) {
+                $this->setClient($value);
+            }
         }
         else {
             parent::__set($name, $value);

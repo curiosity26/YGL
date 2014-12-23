@@ -8,6 +8,7 @@
 
 namespace YGL;
 
+use SebastianBergmann\Exporter\Exception;
 use YGL\Leads\YGLAddress;
 use YGL\Leads\YGLContact;
 use YGL\Leads\YGLLead;
@@ -135,6 +136,10 @@ class YGLJsonObject implements \JsonSerializable {
                       $this->_properties[$name]['length']);
                     break;
                 default:
+                    if (is_string($value) && strlen($value) < 1) {
+                        $value = NULL;
+                    }
+
                     $this->_properties[$name]['value'] = $value instanceof $type
                       ? $value : new $type($value);
                     break;
