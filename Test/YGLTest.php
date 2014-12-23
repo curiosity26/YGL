@@ -10,7 +10,6 @@
 // Test User = yglApiTest1
 // Test Password = password
 
-require_once __DIR__.'/../autoload.php';
 use \YGL\YGLClient;
 
 class YGLTest extends \PHPUnit_Framework_TestCase {
@@ -20,6 +19,7 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
     public function testConnection() {
         $ygl = new YGLClient($this->accessToken);
         $this->properties = $ygl->getProperties();
+        //var_dump($this->properties);
         $this->assertNotEquals(0, $this->properties->count());
     }
 }

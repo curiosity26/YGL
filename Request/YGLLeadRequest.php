@@ -9,18 +9,17 @@
 namespace YGL\Request;
 
 
-use YGL\Leads\YGLLead;
+use ODataQuery\ODataResourceInterface;
 use YGL\Leads\YGLLeadCollection;
 use YGL\Properties\YGLProperty;
-use YGL\Response\YGLResponse;
 
 class YGLLeadRequest extends YGLRequest {
-    private $property;
-    private $id;
+    protected $property;
+    protected $id;
 
-    public function __construct($clientToken = FALSE,
-                                YGLProperty $property = NULL, $id = NULL) {
-        parent::__construct($clientToken);
+    public function __construct($clientToken = FALSE, YGLProperty $property = NULL,
+                                $id = NULL, ODataResourceInterface $query) {
+        parent::__construct($clientToken, $query);
         if (isset($property)) {
             $this->setProperty($property);
             $this->id($id);

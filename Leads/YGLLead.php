@@ -9,11 +9,17 @@
 namespace YGL\Leads;
 
 
+use YGL\YGLClient;
 use YGL\YGLJsonObject;
 
 class YGLLead extends YGLJsonObject {
+    private $client;
 
-    public function __construct(array $values = NULL) {
+    public function __construct(array $values = NULL, YGLClient $client = NULL) {
+        if (isset($client)) {
+            $this->setClient($client);
+        }
+
         $this->_properties = array(
             'leadId'            =>  self::integerProperty(),
             'contactId'         =>  self::integerProperty(),
@@ -43,11 +49,31 @@ class YGLLead extends YGLJsonObject {
         parent::__construct($values);
     }
 
+    public function setClient(YGLClient $client) {
+        $this->client = $client;
+    }
+
+    public function getClient() {
+        return $this->client;
+    }
+
     public function __get($name) {
         if ($name == 'id') {
             return $this->_properties['leadId']['value'];
         }
+        elseif ($name == 'client') {
+            return $this->getClient();
+        }
 
         return parent::__get($name);
+    }
+
+    public function __set($name, $value) {
+        if ($name == 'client' && $value instanceof YGLClient) {
+            $this->setClient($value);
+        }
+        else {
+            parent::__set($name, $value);
+        }
     }
 } 

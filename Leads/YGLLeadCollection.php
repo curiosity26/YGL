@@ -10,12 +10,28 @@ namespace YGL\Leads;
 
 
 use YGL\Interfaces\YGLLeadCollectionInterface;
+use YGL\YGLClient;
 
 class YGLLeadCollection implements YGLLeadCollectionInterface,\JsonSerializable, \Countable {
     protected $collection = array();
+    private $client;
 
     public function __construct(array $leads = array()) {
         $this->__set('collection', $leads);
+    }
+
+    public function setClient(YGLClient $client) {
+        $this->client = $client;
+        if ($this->count() > 0) {
+            foreach ($this->collection as $item) {
+                $item->setClient($client);
+            }
+        }
+        return $this;
+    }
+
+    public function getClient() {
+        return $this->client;
     }
 
     public function append(YGLLead $lead) {
@@ -52,19 +68,29 @@ class YGLLeadCollection implements YGLLeadCollectionInterface,\JsonSerializable,
         if ($name == 'collection' && is_array($value)) {
             foreach ($value as $item) {
                 if ($item instanceof YGLLead) {
+                    if (isset($this->client)) {
+                        $item->setClient($this->client);
+                    }
+
                     $this->collection[$item->id] = $item;
                 }
                 else {
-                    $lead = new YGLLead($item);
+                    $lead = new YGLLead($item, $this->client);
                     $this->collection[$lead->id] = $lead;
                 }
             }
+        }
+        elseif ($name == 'client' && $value instanceof YGLClient) {
+            $this->setClient($value);
         }
     }
 
     public function __get($name) {
         if ($name == 'collection') {
             return $this->collection;
+        }
+        elseif ($name == 'client') {
+            return $this->getClient();
         }
         return NULL;
     }

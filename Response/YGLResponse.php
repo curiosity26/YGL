@@ -10,10 +10,10 @@ namespace YGL\Response;
 
 
 class YGLResponse {
-    private $code;
-    private $headers;
-    private $response;
-    private $body;
+    protected $code;
+    protected $headers;
+    protected $response;
+    protected $body;
 
     public function __construct(HttpResponse $response = NULL) {
         if (isset($response)) {

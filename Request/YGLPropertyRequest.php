@@ -8,26 +8,21 @@
 
 namespace YGL\Request;
 
+use ODataQuery\ODataResourceInterface;
+use ODataQuery\Pager\ODataQueryPager;
 use YGL\Properties\YGLPropertyCollection;
 
 class YGLPropertyRequest extends YGLRequest {
-    protected $limit = 20;
 
-    public function __construct($clientToken = NULL, $id = NULL) {
-        parent::__construct($clientToken);
+    public function __construct($clientToken = NULL, $id = NULL, $limit = 20,
+                                ODataResourceInterface $query = NULL) {
+        parent::__construct($clientToken, $query);
         $this->id($id);
+        $this->pager(new ODataQueryPager($limit));
     }
 
     public function id($id = NULL) {
         $this->setFunction(isset($id) ? 'properties/'.$id : 'properties');
-        return $this;
-    }
-
-    public function setLimit($limit = 20) {
-        if ($limit <= 20) {
-            parent::setLimit($limit);
-        }
-
         return $this;
     }
 

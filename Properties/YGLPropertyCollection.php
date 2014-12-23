@@ -9,15 +9,39 @@
 namespace YGL\Properties;
 
 use YGL\Interfaces\YGLPropertyCollectionInterface;
+use YGL\YGLClient;
 
-class YGLPropertyCollection implements  YGLPropertyCollectionInterface,\JsonSerializable, \Countable {
+class YGLPropertyCollection implements  YGLPropertyCollectionInterface, \JsonSerializable, \Countable {
     protected $collection = array();
+    protected $client;
 
-    public function __construct(array $properties = array()) {
+    public function __construct(array $properties = array(), YGLClient $client = NULL) {
+        if (isset($client)) {
+            $this->setClient($client);
+        }
         $this->__set('collection', $properties);
     }
 
+    public function setClient(YGLClient $client) {
+        $this->client = $client;
+        if ($this->count() > 0) {
+            foreach ($this->collection as $item) {
+                if ($item instanceof YGLProperty) {
+                    $item->setClient($client);
+                }
+            }
+        }
+        return $this;
+    }
+
+    public function getClient() {
+        return $this->client;
+    }
+
     public function append(YGLProperty $property) {
+        if (isset($this->client)) {
+            $property->setClient($this->client);
+        }
         $this->collection[$property->id] = $property;
         return $this;
     }
@@ -51,19 +75,28 @@ class YGLPropertyCollection implements  YGLPropertyCollectionInterface,\JsonSeri
         if ($name == 'collection' && (is_array($value))) {
             foreach ($value as $item) {
                 if ($item instanceof YGLProperty) {
+                    if (isset($this->client)) {
+                        $item->setClient($this->client);
+                    }
                     $this->collection[$item->id] = $item;
                 }
                 else {
-                    $property = new YGLProperty((array)$item);
+                    $property = new YGLProperty((array)$item, $this->client);
                     $this->collection[$property->id] = $property;
                 }
             }
+        }
+        elseif ($name == 'client' && $value instanceof YGLClient) {
+            $this->setClient($value);
         }
     }
 
     public function __get($name) {
         if ($name == 'collection') {
             return $this->collection;
+        }
+        elseif ($name == 'client') {
+            return $this->getClient();
         }
         return NULL;
     }
