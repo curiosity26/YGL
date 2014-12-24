@@ -9,10 +9,9 @@
 namespace YGL\Properties;
 
 use YGL\Collection\YGLCollection;
-use YGL\Interfaces\YGLPropertyCollectionInterface;
 use YGL\YGLClient;
 
-class YGLPropertyCollection extends YGLCollection implements  YGLPropertyCollectionInterface {
+class YGLPropertyCollection extends YGLCollection implements YGLPropertyCollectionInterface {
     protected $client;
 
     public function __construct(YGLClient $client = NULL, array $properties = array()) {

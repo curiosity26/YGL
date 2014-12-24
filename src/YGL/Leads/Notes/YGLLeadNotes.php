@@ -6,7 +6,7 @@
  * Time: 9:52 PM
  */
 
-namespace YGL\Leads;
+namespace YGL\Leads\Notes;
 
 
 use YGL\YGLJsonObject;

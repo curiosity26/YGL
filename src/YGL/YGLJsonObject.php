@@ -8,12 +8,13 @@
 
 namespace YGL;
 
-use YGL\Leads\YGLAddress;
-use YGL\Leads\YGLContact;
+
+use YGL\Leads\Address\YGLAddress;
+use YGL\Leads\Contact\YGLContact;
+use YGL\Leads\Notes\YGLLeadNotes;
+use YGL\Leads\ReferralSource\YGLReferralSourceCollection;
+use YGL\Leads\Resident\YGLLeadResident;
 use YGL\Leads\YGLLead;
-use YGL\Leads\YGLLeadNotes;
-use YGL\Leads\YGLLeadResident;
-use YGL\Leads\YGLReferralSourceCollection;
 use YGL\Properties\YGLProperty;
 use YGL\Tasks\YGLTask;
 use YGL\Users\YGLUser;
@@ -76,26 +77,26 @@ class YGLJsonObject implements \JsonSerializable {
     }
 
     static protected function addressProperty(YGLAddress $default = NULL) {
-        return self::customProperty('YGL\Leads\YGLAddress', $default);
+        return self::customProperty('YGL\Leads\Address\YGLAddress', $default);
     }
 
     static protected function contactProperty(YGLContact $default = NULL) {
-        return self::customProperty('YGL\Leads\YGLContact', $default);
+        return self::customProperty('YGL\Leads\Contact\YGLContact', $default);
     }
 
     static protected function residentProperty(YGLLeadResident $default = NULL)
     {
-        return self::customProperty('YGL\Leads\YGLLeadResident', $default);
+        return self::customProperty('YGL\Leads\Resident\YGLLeadResident', $default);
     }
 
     static protected function referralSourceCollectionProperty(
       YGLReferralSourceCollection $default = NULL) {
-        return self::customProperty('YGL\Leads\YGLReferralSourceCollection',
+        return self::customProperty('YGL\Leads\ReferralSource\YGLReferralSourceCollection',
           $default);
     }
 
     static protected function notesProperty(YGLLeadNotes $default = NULL) {
-        return self::customProperty('YGL\Leads\YGLLeadNotes', $default);
+        return self::customProperty('YGL\Leads\Notes\YGLLeadNotes', $default);
     }
 
     static protected function taskProperty(YGLTask $default = NULL) {

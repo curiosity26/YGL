@@ -6,7 +6,7 @@
  * Time: 9:53 PM
  */
 
-namespace YGL\Leads;
+namespace YGL\Leads\Contact;
 
 
 use YGL\YGLJsonObject;

@@ -87,12 +87,12 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
         $lead = new \YGL\Leads\YGLLead(array(
             'addedOn' => new DateTime(),
             'associate' => 'SageAPITest',
-            'primaryContact' => new \YGL\Leads\YGLContact(array(
+            'primaryContact' => new \YGL\Leads\Contact\YGLContact(array(
                 'firstName' => 'Bob',
                 'lastName'  => 'Jones',
                 'gender'    => 'M',
                 'isInquirer'=> TRUE,
-                'address'   => new \YGL\Leads\YGLAddress(array(
+                'address'   => new \YGL\Leads\Address\YGLAddress(array(
                     'address1'  => '17 Pierce Lane',
                     'city'      => 'Montoursville',
                     'state'     => 'Pennsylvania',

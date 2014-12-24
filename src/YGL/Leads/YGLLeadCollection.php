@@ -10,7 +10,6 @@ namespace YGL\Leads;
 
 
 use YGL\Collection\YGLCollection;
-use YGL\Interfaces\YGLLeadCollectionInterface;
 use YGL\Properties\YGLProperty;
 use YGL\YGLClient;
 

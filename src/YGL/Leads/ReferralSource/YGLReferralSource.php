@@ -6,7 +6,7 @@
  * Time: 9:54 PM
  */
 
-namespace YGL\Leads;
+namespace YGL\Leads\ReferralSource;
 
 
 use YGL\YGLJsonObject;

@@ -6,9 +6,7 @@
  * Time: 8:14 PM
  */
 
-namespace YGL\Interfaces;
-
-use YGL\Properties\YGLProperty;
+namespace YGL\Properties;
 
 interface YGLPropertyCollectionInterface {
     public function append(YGLProperty $property);

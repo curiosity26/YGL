@@ -6,10 +6,8 @@
  * Time: 8:16 PM
  */
 
-namespace YGL\Interfaces;
+namespace YGL\Leads\ReferralSource;
 
-
-use YGL\Leads\YGLReferralSource;
 
 interface YGLReferralSourceCollectionInterface {
     public function append(YGLReferralSource $source);

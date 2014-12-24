@@ -6,10 +6,9 @@
  * Time: 8:15 PM
  */
 
-namespace YGL\Interfaces;
+namespace YGL\Leads;
 
 
-use YGL\Leads\YGLLead;
 
 interface YGLLeadCollectionInterface {
     public function append(YGLLead $lead);
