@@ -12,7 +12,7 @@ namespace YGL\Tasks;
 use YGL\YGLJsonObject;
 
 class YGLTask extends YGLJsonObject {
-  public function __construct(array $values = NULL) {
+  public function __construct($values = NULL) {
 
     $this->_properties = array(
       'taskId'        => self::integerProperty(),
@@ -40,7 +40,7 @@ class YGLTask extends YGLJsonObject {
       'ownderUsername'  => self::stringProperty(10)
     );
 
-    parent::__construct($values = NULL);
+    parent::__construct((array)$values);
   }
 
   public function __get($name) {

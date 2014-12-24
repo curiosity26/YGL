@@ -13,7 +13,7 @@ use YGL\YGLJsonObject;
 
 class YGLAddress extends YGLJsonObject {
 
-    public function __construct(array $values = NULL) {
+    public function __construct($values = NULL) {
         $this->_properties = array(
             'addressId'     =>  self::integerProperty(),
             'address1'      =>  self::stringProperty(),
@@ -33,7 +33,7 @@ class YGLAddress extends YGLJsonObject {
             'zip'           =>  self::stringProperty(10)
         );
 
-        parent::__construct($values);
+        parent::__construct((array)$values);
     }
 
     public function __get($name) {

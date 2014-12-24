@@ -13,13 +13,13 @@ use YGL\YGLJsonObject;
 
 class YGLLeadNotes extends YGLJsonObject {
 
-    public function __construct(array $values = NULL) {
+    public function __construct($values = NULL) {
         $this->_properties = array(
             'notes'     =>  self::stringProperty(255),
             'updatedBy' =>  self::stringProperty(),
             'updatedOn' =>  self::datetimeProperty()
         );
 
-        parent::__construct($values);
+        parent::__construct((array)$values);
     }
 } 

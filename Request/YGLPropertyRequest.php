@@ -30,7 +30,8 @@ class YGLPropertyRequest extends YGLRequest {
     public function send() {
         $response = parent::send();
         if ($response->isSuccess()) {
-            $body = json_decode($response->getBody());
+            $body = $response->getResponseCode() != 201 ? json_decode($response->getBody())
+                : json_decode($response->getResponse()->getRawResponse());
             if (is_array($body)) {
                 $properties = new YGLPropertyCollection($this->getClient(), $body);
                 // Currently, the default behavior of the API returns a single

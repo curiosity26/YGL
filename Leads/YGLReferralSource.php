@@ -13,14 +13,14 @@ use YGL\YGLJsonObject;
 
 class YGLReferralSource extends YGLJsonObject {
 
-    public function __construct(array $values = NULL) {
+    public function __construct($values = NULL) {
         $this->_properties = array(
             'leadSourceId'      =>  self::integerProperty(),
             'leadSourceName'    =>  self::stringProperty(),
             'leadSourceRank'    =>  self::integerProperty()
         );
 
-        parent::__construct($values);
+        parent::__construct((array)$values);
     }
 
     public function __get($name) {

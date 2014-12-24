@@ -17,7 +17,7 @@ class YGLLead extends YGLJsonObject {
     protected $client;
     protected $property;
 
-    public function __construct(array $values = NULL, YGLClient $client = NULL) {
+    public function __construct($values = NULL, YGLClient $client = NULL) {
         if (isset($client)) {
             $this->setClient($client);
         }
@@ -49,7 +49,7 @@ class YGLLead extends YGLJsonObject {
             'veteran'           =>  self::stringProperty(1)
         );
 
-        parent::__construct($values);
+        parent::__construct((array)$values);
     }
 
     public function setClient(YGLClient $client) {

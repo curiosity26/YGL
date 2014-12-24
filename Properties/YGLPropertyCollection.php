@@ -86,6 +86,9 @@ class YGLPropertyCollection extends YGLCollection implements  YGLPropertyCollect
                     $this->collection[$item->id] = $item;
                 }
                 else {
+                    if (is_object($item)) {
+                        $item = (array)$item;
+                    }
                     $property = new YGLProperty((array)$item, $this->client);
                     $this->collection[$property->id] = $property;
                 }

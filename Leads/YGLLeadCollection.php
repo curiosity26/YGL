@@ -99,9 +99,10 @@ class YGLLeadCollection extends YGLCollection implements YGLLeadCollectionInterf
                     $this->collection[$item->id] = $item;
                 }
                 else {
-                    if (!is_array($item)) {
-                        var_dump($value);
+                    if (is_object($item)) {
+                        $item = (array)$item;
                     }
+
                     $lead = new YGLLead($item, $this->client);
                     $this->collection[$lead->id] = $lead;
                 }

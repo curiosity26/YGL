@@ -102,7 +102,6 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
             'userName' => 'Guest5'
         ));
         $response = $property->addLead($lead);
-        var_dump($response);
         $this->assertEquals('Bob', $response->primaryContact->firstName);
         $this->assertEquals('Jones', $response->primaryContact->lastName);
     }

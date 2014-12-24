@@ -13,7 +13,7 @@ use YGL\YGLJsonObject;
 
 class YGLLeadResident extends YGLJsonObject {
 
-    public function __construct(array $values = NULL) {
+    public function __construct($values = NULL) {
         $this->_properties = array(
             'age'           =>  self::integerProperty(),
             'bathing'       =>  self::integerProperty(),
@@ -41,7 +41,7 @@ class YGLLeadResident extends YGLJsonObject {
 
         );
 
-        parent::__construct($values);
+        parent::__construct((array)$values);
     }
 
 } 

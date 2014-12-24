@@ -13,7 +13,7 @@ use YGL\YGLJsonObject;
 
 class YGLContact extends YGLJsonObject {
 
-    public function __construct(array $values = NULL) {
+    public function __construct($values = NULL) {
         $this->_properties = array(
             'contactId'         => self::integerProperty(),
             'addressId'         => self::integerProperty(),
@@ -28,7 +28,7 @@ class YGLContact extends YGLJsonObject {
             'relationToResident'=> self::integerProperty()
         );
 
-        parent::__construct($values);
+        parent::__construct((array)$values);
     }
 
     public function __get($name) {

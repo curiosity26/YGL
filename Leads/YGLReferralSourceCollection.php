@@ -59,6 +59,9 @@ class YGLReferralSourceCollection implements YGLReferralSourceCollectionInterfac
                     $this->collection[$item->id] = $item;
                 }
                 else {
+                    if (is_object($item)) {
+                        $item = (array)$item;
+                    }
                     $source = new YGLReferralSource($item);
                     $this->collection[$source->id] = $source;
                 }

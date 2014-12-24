@@ -49,8 +49,8 @@ class YGLLeadRequest extends YGLRequest {
         if ($response->isSuccess()) {
             $property = $this->getProperty();
             // Response Code 201 means posted data was successfully added
-            $body = $response->getResponseCode() != 201 ? json_decode($response->getBody(), TRUE)
-                : (object)json_decode($response->getResponse()->getRawResponse(), TRUE);
+            $body = $response->getResponseCode() != 201 ? json_decode($response->getBody())
+                : json_decode($response->getResponse()->getRawResponse());
 
             if (is_array($body)) {
                 $leads = new YGLLeadCollection($this->getClient(), $body);

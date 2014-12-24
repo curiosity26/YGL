@@ -17,7 +17,7 @@ use YGL\YGLJsonObject;
 class YGLProperty extends YGLJsonObject {
     protected $client;
 
-    public function __construct(array $values = NULL, YGLClient $client = NULL) {
+    public function __construct($values = NULL, YGLClient $client = NULL) {
         if (isset($client)) {
             $this->setClient($client);
         }
@@ -37,7 +37,7 @@ class YGLProperty extends YGLJsonObject {
             'updatedOn'     =>  self::datetimeProperty()
         );
 
-        parent::__construct($values);
+        parent::__construct((array)$values);
     }
 
     public function setClient(YGLClient $client) {
