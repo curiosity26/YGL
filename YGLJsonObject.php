@@ -8,7 +8,6 @@
 
 namespace YGL;
 
-use SebastianBergmann\Exporter\Exception;
 use YGL\Leads\YGLAddress;
 use YGL\Leads\YGLContact;
 use YGL\Leads\YGLLead;
@@ -105,6 +104,13 @@ class YGLJsonObject implements \JsonSerializable {
 
     static protected function userProperty(YGLUser $default = NULL) {
         return self::customProperty('YGL\Users\YGLUser', $default);
+    }
+
+    public function getType($propertyName) {
+        if (isset($this->_properties[$propertyName])) {
+            return $this->_properties[$propertyName]['type'];
+        }
+        return NULL;
     }
 
     public function JsonSerialize() {
