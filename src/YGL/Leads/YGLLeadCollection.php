@@ -14,7 +14,6 @@ use YGL\Properties\YGLProperty;
 use YGL\YGLClient;
 
 class YGLLeadCollection extends YGLCollection implements YGLLeadCollectionInterface {
-    protected $client;
     protected $property;
 
     public function __construct(YGLClient $client = NULL, array $leads = array()) {
@@ -25,22 +24,11 @@ class YGLLeadCollection extends YGLCollection implements YGLLeadCollectionInterf
         $this->__set('collection', $leads);
     }
 
-    public function setClient(YGLClient $client) {
-        $this->client = $client;
-        if ($this->count() > 0) {
-            foreach ($this->collection as $item) {
-                $item->setClient($client);
-            }
-        }
-        return $this;
-    }
-
-    public function getClient() {
-        return $this->client;
-    }
-
     public function setProperty(YGLProperty $property) {
         if ($property !== $this->property) {
+            if (!isset($this->client) && ($client = $property->getClient())) {
+                $this->setClient($client);
+            }
             $this->property = $property;
             foreach ($this->collection as $item) {
                 $item->setProperty($property);
@@ -54,6 +42,14 @@ class YGLLeadCollection extends YGLCollection implements YGLLeadCollectionInterf
     }
 
     public function append(YGLLead $lead) {
+        // Prefer this client
+        if (isset($this->client)) {
+            $lead->setClient($this->client);
+        }
+        elseif ($client = $lead->getClient()) {
+            $this->setClient($client);
+        }
+
         $this->collection[$lead->id] = $lead;
         return $this;
     }
@@ -74,15 +70,10 @@ class YGLLeadCollection extends YGLCollection implements YGLLeadCollectionInterf
         }
         else {
             if ($value instanceof YGLLead) {
-                if (isset($this->client)) {
-                    $value->setClient($this->client);
-                }
-
-                $this->collection[$value->id] = $value;
+                $this->append($value);
             }
             else {
-                $lead = new YGLLead($value, $this->client);
-                $this->collection[$lead->id] = $lead;
+                $this->append(new YGLLead($value, $this->client));
             }
         }
     }
@@ -91,33 +82,22 @@ class YGLLeadCollection extends YGLCollection implements YGLLeadCollectionInterf
         if ($name == 'collection' && is_array($value)) {
             foreach ($value as $item) {
                 if ($item instanceof YGLLead) {
-                    if (isset($this->client)) {
-                        $item->setClient($this->client);
-                    }
-
-                    $this->collection[$item->id] = $item;
+                    $this->append($item);
                 }
                 else {
                     if (is_object($item)) {
                         $item = (array)$item;
                     }
 
-                    $lead = new YGLLead($item, $this->client);
-                    $this->collection[$lead->id] = $lead;
+                    $this->append(new YGLLead($item));
                 }
             }
-        }
-        elseif ($name == 'client' && $value instanceof YGLClient) {
-            $this->setClient($value);
         }
     }
 
     public function __get($name) {
         if ($name == 'collection') {
             return $this->collection;
-        }
-        elseif ($name == 'client') {
-            return $this->getClient();
         }
         return NULL;
     }

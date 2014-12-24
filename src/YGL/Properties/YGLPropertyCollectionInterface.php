@@ -8,9 +8,9 @@
 
 namespace YGL\Properties;
 
-interface YGLPropertyCollectionInterface {
+use YGL\Collection\YGLCollectionInterface;
+
+interface YGLPropertyCollectionInterface extends YGLCollectionInterface {
     public function append(YGLProperty $property);
     public function remove(YGLProperty $property);
-    public function clear();
-    public function item($id);
 }

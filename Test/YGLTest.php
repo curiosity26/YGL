@@ -42,6 +42,7 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
     /**
      * @depends testPropertiesList
      * @param \YGL\Properties\YGLPropertyCollection $properties
+     * @return \YGL\Properties\YGLProperty
      */
     public function testPropertiesGet(\YGL\Properties\YGLPropertyCollection $properties) {
         $property = $properties->current();
@@ -52,6 +53,7 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
             $this->assertEquals($property->id, $get_property->id);
             $this->assertEquals($property->name, $get_property->name);
         }
+        return $property;
     }
 
     /**
@@ -64,7 +66,6 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
         $leads = $property->getLeads();
         $this->assertNotEmpty($leads);
         return $leads;
-        //return $leads instanceof \YGL\Leads\YGLLead ? new \YGL\Leads\YGLLeadCollection($properties->getClient(), array($leads)) : $leads;
     }
 
     /**
@@ -76,11 +77,13 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
          $get_lead = $lead->getProperty()->getLeads($lead->id);
          $this->assertEquals($lead->id, $get_lead->id);
          $this->assertEquals($lead->primaryContact->id, $get_lead->primaryContact->id);
+        return $lead;
     }
 
     /**
      * @depends testPropertiesList
      * @param \YGL\Properties\YGLPropertyCollection $properties
+     * @return \YGL\Leads\YGLLead
      */
     public function testLeadPost(\YGL\Properties\YGLPropertyCollection $properties) {
         $property = $properties->current();
@@ -104,8 +107,53 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
         $response = $property->addLead($lead);
         $this->assertEquals('Bob', $response->primaryContact->firstName);
         $this->assertEquals('Jones', $response->primaryContact->lastName);
+        return $response;
     }
 
+    /**
+     * @depends testPropertiesGet
+     * @param \YGL\Properties\YGLProperty $property
+     */
+    public function testPropertyTasksList(\YGL\Properties\YGLProperty $property) {
+        $tasks = $property->getTasks();
+        $this->assertNotEmpty($tasks);
+    }
+
+    /**
+     * @depends testLeadsGet
+     * @param \YGL\Leads\YGLLead $lead
+     * @return mixed
+     */
+    public function testLeadTasksList(\YGL\Leads\YGLLead $lead) {
+        $tasks = $lead->getTasks();
+        $this->assertNotEmpty($tasks);
+        return $tasks->current();
+    }
+
+    /**
+     * @depends testLeadTasksList
+     * @param \YGL\Tasks\YGLTask $task
+     */
+    public function testLeadTasksGet(\YGL\Tasks\YGLTask $task) {
+        $lead = $task->getLead();
+        $get_task = $lead->getTasks($task->id);
+        $this->assertEquals($task->id, $get_task->id);
+    }
+
+    /**
+     * @depends testLeadsGet
+     * @param \YGL\Leads\YGLLead $lead
+     */
+    public function testLeadTasksAdd(\YGL\Leads\YGLLead $lead) {
+        $task = new \YGL\Tasks\YGLTask(array(
+          'contactId' => 135224,
+          'taskTitle' => 'Test Post Task',
+          'taskTypeId'=> 24
+        ));
+        $response = $lead->addTask($task);
+        var_dump($response);
+        $this->assertNotNull($response->id);
+    }
 
 }
  

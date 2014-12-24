@@ -12,7 +12,6 @@ use YGL\Collection\YGLCollection;
 use YGL\YGLClient;
 
 class YGLPropertyCollection extends YGLCollection implements YGLPropertyCollectionInterface {
-    protected $client;
 
     public function __construct(YGLClient $client = NULL, array $properties = array()) {
         parent::__construct();
@@ -20,22 +19,6 @@ class YGLPropertyCollection extends YGLCollection implements YGLPropertyCollecti
             $this->setClient($client);
         }
         $this->__set('collection', $properties);
-    }
-
-    public function setClient(YGLClient $client) {
-        $this->client = $client;
-        if ($this->count() > 0) {
-            foreach ($this->collection as $item) {
-                if ($item instanceof YGLProperty) {
-                    $item->setClient($client);
-                }
-            }
-        }
-        return $this;
-    }
-
-    public function getClient() {
-        return $this->client;
     }
 
     public function append(YGLProperty $property) {
@@ -93,17 +76,11 @@ class YGLPropertyCollection extends YGLCollection implements YGLPropertyCollecti
                 }
             }
         }
-        elseif ($name == 'client' && $value instanceof YGLClient) {
-            $this->setClient($value);
-        }
     }
 
     public function __get($name) {
         if ($name == 'collection') {
             return $this->collection;
-        }
-        elseif ($name == 'client') {
-            return $this->getClient();
         }
         return NULL;
     }

@@ -14,7 +14,9 @@ use YGL\Leads\YGLLeadCollection;
 use YGL\Properties\YGLProperty;
 use YGL\Request\YGLLeadRequest;
 use YGL\Request\YGLPropertyRequest;
+use YGL\Request\YGLTaskRequest;
 use YGL\Tasks\YGLTask;
+use YGL\Tasks\YGLTaskCollection;
 use YGL\Users\YGLUser;
 
 class YGLClient {
@@ -79,12 +81,21 @@ class YGLClient {
 
     public function getTasks(YGLProperty $property, YGLLead $lead = NULL,
                              $id = NULL, ODataResourceInterface $query = NULL) {
-
+        $request = new YGLTaskRequest($this, $property, $lead, $id, $query);
+        return $request->send();
     }
 
-    public function setTask(YGLProperty $property,
-                            YGLLead $lead, YGLTask $task) {
+    public function addTask(YGLProperty $property, YGLLead $lead, YGLTask $task) {
+        $request = new YGLTaskRequest($this, $property, $lead);
+        $request->setBody($task);
+        return $request->send();
+    }
 
+    public function addTasks(YGLProperty $property,
+                            YGLLead $lead, YGLTaskCollection $tasks) {
+        $request = new YGLTaskRequest($this, $property, $lead);
+        $request->setBody($tasks);
+        return $request->send();
     }
 
     public function getUsers(YGLProperty $property, YGLUser $user = NULL,

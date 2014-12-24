@@ -23,20 +23,24 @@ class YGLLeadRequest extends YGLRequest {
         parent::__construct($clientToken, $query);
         if (isset($property)) {
             $this->setProperty($property);
-            $this->id($id);
         }
+        $this->id($id);
     }
 
     public function id($id = NULL) {
         $this->id = $id;
-        $function = isset($id) ? 'properties/'.$this->property->id.'/leads/'.$id
-            : 'properties/'.$this->property->id.'/leads';
-        $this->setFunction($function);
+        if (isset($this->property)) {
+            $function = isset($id)
+              ? 'properties/'.$this->property->id.'/leads/'.$id
+              : 'properties/'.$this->property->id.'/leads';
+            $this->setFunction($function);
+        }
         return $this;
     }
 
     public function setProperty(YGLProperty $property) {
         $this->property = $property;
+        $this->id($this->id); // Refresh the function
         return $this;
     }
 
@@ -49,8 +53,9 @@ class YGLLeadRequest extends YGLRequest {
         if ($response->isSuccess()) {
             $property = $this->getProperty();
             // Response Code 201 means posted data was successfully added
-            $body = $response->getResponseCode() != 201 ? json_decode($response->getBody())
-                : json_decode($response->getResponse()->getRawResponse());
+            $body = $response->getResponseCode() != 201
+              ? json_decode($response->getBody())
+              : json_decode($response->getResponse()->getRawResponse());
 
             if (is_array($body)) {
                 $leads = new YGLLeadCollection($this->getClient(), $body);

@@ -10,9 +10,9 @@ namespace YGL\Leads;
 
 
 
-interface YGLLeadCollectionInterface {
+use YGL\Collection\YGLCollectionInterface;
+
+interface YGLLeadCollectionInterface extends YGLCollectionInterface {
     public function append(YGLLead $lead);
     public function remove(YGLLead $lead);
-    public function clear();
-    public function item($id);
 }

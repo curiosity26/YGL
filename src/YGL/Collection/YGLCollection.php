@@ -8,11 +8,36 @@
 
 namespace YGL\Collection;
 
+use YGL\YGLClient;
+
 abstract class YGLCollection implements \JsonSerializable, \Countable, \Iterator, \ArrayAccess {
   protected $collection = array();
+  protected $client;
 
-  public function __construct(array $values = array()) {
+  public function __construct(YGLClient $client = NULL, array $values = array()) {
+    if (isset($client)) {
+      $this->setClient($client);
+    }
+
     $this->collection = $values;
+  }
+
+  public function setClient(YGLClient $client) {
+    if ($client !== $this->client) {
+      $this->client = $client;
+      if ($this->count() > 0) {
+        foreach ($this->collection as $item) {
+          if (property_exists($item, 'setClient')) {
+            $item->setClient($client);
+          }
+        }
+      }
+    }
+    return $this;
+  }
+
+  public function getClient() {
+    return $this->client;
   }
 
   public function count() {
@@ -60,6 +85,9 @@ abstract class YGLCollection implements \JsonSerializable, \Countable, \Iterator
 
   public function offsetSet($offset, $value) {
     if (!is_null($offset) && is_numeric($offset)) {
+      if (isset($this->client) && property_exists($value, 'setClient')) {
+        $value->setClient($this->getClient());
+      }
       $this->collection[$offset] = $value;
     }
   }
