@@ -10,11 +10,11 @@ namespace YGL\Response;
 
 
 class HttpResponse {
-    private $rawResponse;
-    private $rawHeader;
-    private $requestInfo = array();
-    private $response;
-    private $headers = array();
+    protected $rawResponse;
+    protected $rawHeader;
+    protected $requestInfo = array();
+    protected $response;
+    protected $headers = array();
 
     static $HTTP_RESPONSE_CODES = array(
         100 => "Continue",
@@ -67,7 +67,7 @@ class HttpResponse {
         }
 
         if (isset($rawResponse)) {
-            $this->parse($rawResponse, isset($this->requestInfo['header_size']) ? $this->requestInfo['header_size'] : 0);
+            $this->parse($rawResponse, isset($this->requestInfo['header_size']) && $this->getResponseCode() != 201 ? $this->requestInfo['header_size'] : 0);
         }
 
     }

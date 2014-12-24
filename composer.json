@@ -27,6 +27,6 @@
     "curiosity26/odataquery": "dev-master"
   },
   "require-dev": {
-    "phpunit/phpunit": "4-stable"
+    "phpunit/phpunit": "4.4-stable"
   }
 }

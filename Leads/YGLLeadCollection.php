@@ -11,10 +11,12 @@ namespace YGL\Leads;
 
 use YGL\Collection\YGLCollection;
 use YGL\Interfaces\YGLLeadCollectionInterface;
+use YGL\Properties\YGLProperty;
 use YGL\YGLClient;
 
 class YGLLeadCollection extends YGLCollection implements YGLLeadCollectionInterface {
     protected $client;
+    protected $property;
 
     public function __construct(YGLClient $client = NULL, array $leads = array()) {
         parent::__construct();
@@ -36,6 +38,20 @@ class YGLLeadCollection extends YGLCollection implements YGLLeadCollectionInterf
 
     public function getClient() {
         return $this->client;
+    }
+
+    public function setProperty(YGLProperty $property) {
+        if ($property !== $this->property) {
+            $this->property = $property;
+            foreach ($this->collection as $item) {
+                $item->setProperty($property);
+            }
+        }
+        return $this;
+    }
+
+    public function getProperty() {
+        return $this->property;
     }
 
     public function append(YGLLead $lead) {
@@ -83,6 +99,9 @@ class YGLLeadCollection extends YGLCollection implements YGLLeadCollectionInterf
                     $this->collection[$item->id] = $item;
                 }
                 else {
+                    if (!is_array($item)) {
+                        var_dump($value);
+                    }
                     $lead = new YGLLead($item, $this->client);
                     $this->collection[$lead->id] = $lead;
                 }

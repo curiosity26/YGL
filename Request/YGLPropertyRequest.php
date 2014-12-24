@@ -38,12 +38,11 @@ class YGLPropertyRequest extends YGLRequest {
                 // would ever occur when the result is an array with one object,
                 // we would want that single object returned to conform to the
                 // standard behavior.
-                return $properties->count() > 0 ? $properties->rewind()
-                  : $properties->rewind()->current();
+                return $properties->count() > 0 ? $properties->rewind()  : $properties->rewind()->current();
             }
             return new YGLProperty((array)$body, $this->getClient());
         }
 
-        return new YGLPropertyCollection();
+        return $response;
     }
 } 

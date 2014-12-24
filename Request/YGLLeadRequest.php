@@ -48,13 +48,14 @@ class YGLLeadRequest extends YGLRequest {
         $response = parent::send();
         if ($response->isSuccess()) {
             $property = $this->getProperty();
-            $body = json_decode($response->getBody(), TRUE);
+            // Response Code 201 means posted data was successfully added
+            $body = $response->getResponseCode() != 201 ? json_decode($response->getBody(), TRUE)
+                : (object)json_decode($response->getResponse()->getRawResponse(), TRUE);
+
             if (is_array($body)) {
                 $leads = new YGLLeadCollection($this->getClient(), $body);
                 $leads->rewind();
-                foreach ($leads as $lead) {
-                    $lead->setProperty($property);
-                }
+                $leads->setProperty($property);
                 // Unlike properties, leads always returns a collection (for now)
                 // To make this library behave in a constant fashion, the following line
                 // will correct this behavior
@@ -64,6 +65,6 @@ class YGLLeadRequest extends YGLRequest {
             $lead->setProperty($property);
             return $lead;
         }
-        return new YGLLeadCollection();
+        return $response;
     }
 } 

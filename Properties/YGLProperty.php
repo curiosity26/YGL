@@ -57,17 +57,19 @@ class YGLProperty extends YGLJsonObject {
     }
 
     public function addLead(YGLLead $lead) {
+        $lead->setProperty($this);
         if ($this->client instanceof YGLClient) {
-            $this->client->addLead($this, $lead);
+            return $this->client->addLead($this, $lead);
         }
-        return $this;
+        return NULL;
     }
 
     public function addLeads(YGLLeadCollection $leads) {
+        $leads->setProperty($this);
         if ($this->client instanceof YGLClient) {
-            $this->client->addLeads($this, $leads);
+            return $this->client->addLeads($this, $leads);
         }
-        return $this;
+        return NULL;
     }
 
     public function getTasks() {

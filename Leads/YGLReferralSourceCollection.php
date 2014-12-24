@@ -14,8 +14,10 @@ use YGL\Interfaces\YGLReferralSourceCollectionInterface;
 class YGLReferralSourceCollection implements YGLReferralSourceCollectionInterface,\JsonSerializable, \Countable {
     protected $collection = array();
 
-    public function __construct(array $values = array()) {
-        $this->__set('collection', $values);
+    public function __construct(array $values = NULL) {
+        if (isset($values)) {
+            $this->__set('collection', $values);
+        }
     }
 
     public function append(YGLReferralSource $source) {

@@ -86,10 +86,12 @@ class YGLRequest extends ODataResourcePath {
 
     public function send() {
         $path = (string)$this;
+        $method = !empty($this->data) ? HttpRequest::METHOD_JSON
+            : HttpRequest::METHOD_GET;
+
         $request = new HttpRequest(
           $path,
-          isset($this->data) ? HttpRequest::METHOD_POST
-            : HttpRequest::METHOD_GET,
+          $method,
           $this->data,
           $this->headers
         );

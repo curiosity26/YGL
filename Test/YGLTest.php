@@ -36,6 +36,7 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
         $properties = $ygl->getProperties();
         $this->assertNotEmpty($properties);
         return $properties;
+        //return $properties instanceof \YGL\Properties\YGLProperty ? new \YGL\Properties\YGLPropertyCollection($ygl, array($properties)) : $properties;
     }
 
     /**
@@ -63,6 +64,7 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
         $leads = $property->getLeads();
         $this->assertNotEmpty($leads);
         return $leads;
+        //return $leads instanceof \YGL\Leads\YGLLead ? new \YGL\Leads\YGLLeadCollection($properties->getClient(), array($leads)) : $leads;
     }
 
     /**
@@ -75,6 +77,36 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
          $this->assertEquals($lead->id, $get_lead->id);
          $this->assertEquals($lead->primaryContact->id, $get_lead->primaryContact->id);
     }
+
+    /**
+     * @depends testPropertiesList
+     * @param \YGL\Properties\YGLPropertyCollection $properties
+     */
+    public function testLeadPost(\YGL\Properties\YGLPropertyCollection $properties) {
+        $property = $properties->current();
+        $lead = new \YGL\Leads\YGLLead(array(
+            'addedOn' => new DateTime(),
+            'associate' => 'SageAPITest',
+            'primaryContact' => new \YGL\Leads\YGLContact(array(
+                'firstName' => 'Bob',
+                'lastName'  => 'Jones',
+                'gender'    => 'M',
+                'isInquirer'=> TRUE,
+                'address'   => new \YGL\Leads\YGLAddress(array(
+                    'address1'  => '17 Pierce Lane',
+                    'city'      => 'Montoursville',
+                    'state'     => 'Pennsylvania',
+                    'zip'       =>  '17754'
+                ))
+            )),
+            'userName' => 'Guest5'
+        ));
+        $response = $property->addLead($lead);
+        var_dump($response);
+        $this->assertEquals('Bob', $response->primaryContact->firstName);
+        $this->assertEquals('Jones', $response->primaryContact->lastName);
+    }
+
 
 }
  

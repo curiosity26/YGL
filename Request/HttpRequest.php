@@ -30,6 +30,7 @@ class HttpRequest {
     const METHOD_DELETE = 'DELETE';
     const METHOD_HEAD = 'HEAD';
     const METHOD_CONNECT = 'CONNECT';
+    const METHOD_JSON = 'JSON';
 
     /* Authorization Constants */
     const AUTH_ANY = CURLAUTH_ANY;
@@ -68,7 +69,15 @@ class HttpRequest {
 
     public function setMethod($method) {
 
-        if (in_array($method, array())) {
+        if (in_array($method, array(
+            self::METHOD_CONNECT,
+            self::METHOD_DELETE,
+            self::METHOD_GET,
+            self::METHOD_HEAD,
+            self::METHOD_POST,
+            self::METHOD_PUT,
+            self::METHOD_JSON
+            ))) {
             $this->method = $method;
         }
 
@@ -87,7 +96,7 @@ class HttpRequest {
     protected function buildHeaders() {
         $headers = array();
         foreach ($this->headers as $name => $value) {
-            $headers[] = $name.': '.$value;
+            $headers[] = "$name: $value";
         }
         return $headers;
     }
@@ -143,6 +152,7 @@ class HttpRequest {
         curl_setopt_array($this->ch, array(
                 CURLOPT_URL => $this->url,
                 CURLOPT_RETURNTRANSFER => TRUE,
+                CURLOPT_FOLLOWLOCATION => TRUE,
                 CURLOPT_VERBOSE => TRUE,
                 CURLOPT_COOKIEJAR => $this->cookie,
                 CURLOPT_PORT => isset($this->port) ? $this->port : 80,
@@ -150,8 +160,7 @@ class HttpRequest {
                 CURLOPT_TIMEOUT => $this->timeout,
                 CURLOPT_MAXREDIRS => $this->maxRedirects,
                 CURLOPT_AUTOREFERER => TRUE,
-                CURLINFO_HEADER_OUT => TRUE,
-                CURLOPT_HEADER => $this->buildHeaders()
+                CURLINFO_HEADER_OUT => TRUE
             ));
 
         if (preg_match('/^https:/', $this->url) !== FALSE) {
@@ -170,6 +179,21 @@ class HttpRequest {
             curl_setopt($this->ch, CURLOPT_COOKIEFILE, $this->cookie);
         }
 
+        if ($this->method == self::METHOD_PUT && get_resource_type($this->body) == 'file') {
+            curl_setopt($this->ch, CURLOPT_INFILE, $this->body);
+        }
+        elseif (is_string($this->body) || is_array($this->body)) {
+            curl_setopt($this->ch, CURLOPT_POSTFIELDS, $this->body);
+            if (is_string($this->body)) {
+                $this->addHeader('Content-Length', strlen($this->body));
+            }
+        }
+
+        if (isset($this->authMethod)) {
+            curl_setopt($this->ch, CURLOPT_HTTPAUTH, $this->authMethod);
+            curl_setopt($this->ch, CURLOPT_USERPWD, $this->authCredentials);
+        }
+
         switch ($this->method) {
             case self::METHOD_POST:
                 curl_setopt($this->ch, CURLOPT_POST, TRUE);
@@ -182,23 +206,16 @@ class HttpRequest {
             case self::METHOD_CONNECT:
                 curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, $this->method);
                 break;
+            case self::METHOD_JSON:
+                curl_setopt($this->ch, CURLOPT_CUSTOMREQUEST, "POST"); // Posting JSON Data needs to POST while sidestepping POST
+                $this->addHeader('Content-Type', 'application/json');
+                break;
             default:
                 curl_setopt($this->ch, CURLOPT_HTTPGET, TRUE);
+                curl_setopt($this->ch, CURLOPT_HEADER, $this->buildHeaders());
         }
 
-        if ($this->method == self::METHOD_PUT && get_resource_type($this->body) == 'file') {
-            curl_setopt($this->ch, CURLOPT_INFILE, $this->body);
-        }
-        elseif (is_string($this->body) || is_array($this->body)) {
-            curl_setopt($this->ch, CURLOPT_POSTFIELDS, $this->body);
-        }
-
-        if (isset($this->authMethod)) {
-            curl_setopt($this->ch, CURLOPT_HTTPAUTH, $this->authMethod);
-            curl_setopt($this->ch, CURLOPT_USERPWD, $this->authCredentials);
-        }
-
-        return $this;
+        curl_setopt($this->ch, CURLOPT_HTTPHEADER, $this->buildHeaders());
     }
 
     public function send() {
