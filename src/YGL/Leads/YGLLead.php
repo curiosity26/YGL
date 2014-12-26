@@ -16,7 +16,6 @@ use YGL\YGLClient;
 use YGL\YGLJsonObject;
 
 class YGLLead extends YGLJsonObject {
-    protected $client;
     protected $property;
 
     public function __construct($values = NULL, YGLClient $client = NULL) {
@@ -54,18 +53,6 @@ class YGLLead extends YGLJsonObject {
         parent::__construct((array)$values);
     }
 
-    public function setClient(YGLClient $client) {
-        $this->client = $client;
-        if (isset($this->property)) {
-            $this->property->setClient($client);
-        }
-        return $this;
-    }
-
-    public function getClient() {
-        return $this->client;
-    }
-
     public function setProperty(YGLProperty $property) {
         $this->property = NULL;
         if (isset($this->client)) {
@@ -83,23 +70,26 @@ class YGLLead extends YGLJsonObject {
 
     public function addTask(YGLTask $task) {
         $task->setLead($this);
-        if (isset($this->client) && isset($this->property)) {
-            return $this->getClient()->addTask($this->getProperty(), $this, $task);
+        if (($client = $this->getClient()) && $client instanceof YGLClient && ($property = $this->getProperty()) &&
+            $property instanceof YGLProperty) {
+            return $client->addTask($property, $this, $task);
         }
         return FALSE;
     }
 
     public function addTasks(YGLTaskCollection $tasks) {
         $tasks->setLead($this);
-        if (isset($this->client) && isset($this->property)) {
-            return $this->getClient()->addTasks($this->getProperty(), $this, $tasks);
+        if (($client = $this->getClient()) && $client instanceof YGLClient && ($property = $this->getProperty()) &&
+            $property instanceof YGLProperty) {
+            return $client->addTasks($property, $this, $tasks);
         }
         return FALSE;
     }
 
     public function getTasks($id = NULL) {
-        if (isset($this->client) && isset($this->property)) {
-            return $this->getClient()->getTasks($this->getProperty(), $this, $id);
+        if (($client = $this->getClient()) && $client instanceof YGLClient && ($property = $this->getProperty()) &&
+            $property instanceof YGLProperty) {
+            return $client->getTasks($property, $this, $id);
         }
         return NULL;
     }
@@ -107,23 +97,9 @@ class YGLLead extends YGLJsonObject {
 
     public function __get($name) {
         if ($name == 'id') {
-            return $this->_properties['leadId']['value'];
-        }
-        elseif ($name == 'client') {
-            return $this->getClient();
+            return parent::__get('leadId');
         }
 
         return parent::__get($name);
-    }
-
-    public function __set($name, $value) {
-        if ($name == 'client') {
-            if ($value instanceof YGLClient) {
-                $this->setClient($value);
-            }
-        }
-        else {
-            parent::__set($name, $value);
-        }
     }
 } 

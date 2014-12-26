@@ -36,7 +36,6 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
         $properties = $ygl->getProperties();
         $this->assertNotEmpty($properties);
         return $properties;
-        //return $properties instanceof \YGL\Properties\YGLProperty ? new \YGL\Properties\YGLPropertyCollection($ygl, array($properties)) : $properties;
     }
 
     /**
@@ -143,17 +142,45 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
     /**
      * @depends testLeadsGet
      * @param \YGL\Leads\YGLLead $lead
+     * @TODO posting tasks isn't supported by the API yet, but once it is the code is in place
      */
-    public function testLeadTasksAdd(\YGL\Leads\YGLLead $lead) {
+    /*public function testLeadTasksAdd(\YGL\Leads\YGLLead $lead) {
         $task = new \YGL\Tasks\YGLTask(array(
           'contactId' => 135224,
           'taskTitle' => 'Test Post Task',
-          'taskTypeId'=> 24
+          'taskTypeId'=> 24,
+          'priorityId' => 2
+
         ));
         $response = $lead->addTask($task);
-        var_dump($response);
-        $this->assertNotNull($response->id);
+        if ($response instanceof \YGL\Tasks\YGLTask) {
+            $this->assertNotNull($response->id);
+        }
+    }*/
+
+    /**
+     * @depends testPropertiesGet
+     * @param \YGL\Properties\YGLProperty $property
+     * @return $this|bool|mixed|\YGL\Response\YGLResponse|\YGL\Users\YGLUser
+     */
+    public function testUsersList(\YGL\Properties\YGLProperty $property) {
+        $users = $property->getUsers();
+        $this->assertNotEmpty($users);
+        return $users;
     }
+
+    /**
+     * @depends testUsersList
+     * @param \YGL\Users\YGLUsersCollection $users
+     * @TODO Getting uses by ID is not yet supported, test once it is
+     */
+    /*public function testUserGet(\YGL\Users\YGLUsersCollection $users) {
+        $user = $users->current();
+        $property = $users->getProperty();
+        $get_user = $property->getUsers($user->id);
+        $this->assertEquals($user->id,$get_user->id);
+        $this->assertEquals($user->userName, $get_user->userName);
+    }*/
 
 }
  

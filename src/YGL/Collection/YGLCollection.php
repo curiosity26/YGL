@@ -83,6 +83,11 @@ abstract class YGLCollection implements \JsonSerializable, \Countable, \Iterator
     return $this;
   }
 
+  public function clear() {
+    $this->collection = array();
+    return $this;
+  }
+
   public function offsetSet($offset, $value) {
     if (!is_null($offset) && is_numeric($offset)) {
       if (isset($this->client) && property_exists($value, 'setClient')) {

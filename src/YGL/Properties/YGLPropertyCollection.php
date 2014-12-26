@@ -34,11 +34,6 @@ class YGLPropertyCollection extends YGLCollection implements YGLPropertyCollecti
         return $this;
     }
 
-    public function clear() {
-        $this->collection = array();
-        return $this;
-    }
-
     public function offsetSet($offset, $value) {
         if (isset($offset) && ($property = $this->item($offset))) {
             $this->collection[$offset] = $value;

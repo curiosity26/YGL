@@ -6,12 +6,13 @@
  * Time: 11:27 PM
  */
 
-namespace YGL\Request;
+namespace YGL\Properties\Request;
 
 use ODataQuery\ODataResourceInterface;
 use ODataQuery\Pager\ODataQueryPager;
 use YGL\Properties\YGLProperty;
 use YGL\Properties\YGLPropertyCollection;
+use YGL\Request\YGLRequest;
 
 class YGLPropertyRequest extends YGLRequest {
 

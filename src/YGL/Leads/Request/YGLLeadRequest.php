@@ -6,13 +6,14 @@
  * Time: 11:01 AM
  */
 
-namespace YGL\Request;
+namespace YGL\Leads\Request;
 
 
 use ODataQuery\ODataResourceInterface;
 use YGL\Leads\YGLLead;
 use YGL\Leads\YGLLeadCollection;
 use YGL\Properties\YGLProperty;
+use YGL\Request\YGLRequest;
 
 class YGLLeadRequest extends YGLRequest {
     protected $property;

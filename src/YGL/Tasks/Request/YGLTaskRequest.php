@@ -6,18 +6,20 @@
  * Time: 10:40 AM
  */
 
-namespace YGL\Request;
+namespace YGL\Tasks\Request;
 
 
 use ODataQuery\ODataResourceInterface;
 use YGL\Leads\YGLLead;
 use YGL\Properties\YGLProperty;
+use YGL\Request\YGLRequest;
 use YGL\Tasks\YGLTask;
 use YGL\Tasks\YGLTaskCollection;
 
 class YGLTaskRequest extends YGLRequest {
   protected $property;
   protected $lead;
+  protected $id;
 
   public function __construct($clientToken = FALSE, YGLProperty $property = NULL,
                               YGLLead $lead = NULL, $id = NULL,
@@ -43,7 +45,6 @@ class YGLTaskRequest extends YGLRequest {
       if (isset($id)) {
         $function .= '/'.$id;
       }
-      var_dump($function);
       $this->setFunction($function);
     }
     return $this;

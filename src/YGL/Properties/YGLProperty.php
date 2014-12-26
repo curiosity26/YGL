@@ -9,18 +9,15 @@
 namespace YGL\Properties;
 
 
+use ODataQuery\ODataResourceInterface;
 use YGL\Leads\YGLLead;
 use YGL\Leads\YGLLeadCollection;
 use YGL\YGLClient;
 use YGL\YGLJsonObject;
 
 class YGLProperty extends YGLJsonObject {
-    protected $client;
 
     public function __construct($values = NULL, YGLClient $client = NULL) {
-        if (isset($client)) {
-            $this->setClient($client);
-        }
 
         $this->_properties = array(
             'propertyId'    =>  self::integerProperty(),
@@ -37,80 +34,51 @@ class YGLProperty extends YGLJsonObject {
             'updatedOn'     =>  self::datetimeProperty()
         );
 
-        parent::__construct((array)$values);
+        parent::__construct((array)$values, $client);
     }
 
-    public function setClient(YGLClient $client) {
-        $this->client = $client;
-        return $this;
-    }
-
-    public function getClient() {
-        return $this->client;
-    }
-
-    public function getLeads($id = NULL) {
-        if ($this->client instanceof YGLClient) {
-            return $this->client->getLeads($this, $id);
+    public function getLeads($id = NULL, ODataResourceInterface $query = NULL) {
+        if (($client = $this->getClient()) && $client instanceof YGLClient) {
+            return $client->getLeads($this, $id, $query);
         }
         return FALSE;
     }
 
     public function addLead(YGLLead $lead) {
         $lead->setProperty($this);
-        if ($this->client instanceof YGLClient) {
-            return $this->client->addLead($this, $lead);
+        if (($client = $this->getClient()) && $client instanceof YGLClient) {
+            return $client->addLead($this, $lead);
         }
         return NULL;
     }
 
     public function addLeads(YGLLeadCollection $leads) {
         $leads->setProperty($this);
-        if ($this->client instanceof YGLClient) {
-            return $this->client->addLeads($this, $leads);
+        if (($client = $this->getClient()) && $client instanceof YGLClient) {
+            return $client->addLeads($this, $leads);
         }
         return NULL;
     }
 
-    public function getTasks() {
-        if ($this->client instanceof YGLClient) {
-            return $this->client->getTasks($this);
+    public function getTasks(ODataResourceInterface $query = NULL) {
+        if (($client = $this->getClient()) && $client instanceof YGLClient) {
+            return $client->getTasks($this, $query);
+        }
+        return FALSE;
+    }
+
+    public function getUsers($id = NULL, ODataResourceInterface $query = NULL) {
+        if (($client = $this->getClient()) && $client instanceof YGLClient) {
+            return $client->getUsers($this, $id, $query);
         }
         return FALSE;
     }
 
     public function __get($name) {
         if ($name == 'id') {
-            return $this->_properties['propertyId']['value'];
-        }
-        elseif ($name == 'leads') {
-            return $this->getLeads();
-        }
-        elseif ($name == 'client') {
-            return $this->getClient();
+            return parent::__get('propertyId');
         }
 
         return parent::__get($name);
-    }
-
-    public function __set($name, $value) {
-        if ($name == 'leads') {
-            if ($value instanceof YGLLead) {
-                $this->addLead($value);
-            }
-            elseif (is_array($value)) {
-                $collection = new YGLLeadCollection($value);
-                $this->addLeads($collection);
-            }
-            elseif ($value instanceof YGLLeadCollection) {
-                $this->addLeads($value);
-            }
-        }
-        elseif ($name == 'client' && $value instanceof YGLClient) {
-            $this->setClient($value);
-        }
-        else {
-            parent::__set($name, $value);
-        }
     }
 } 

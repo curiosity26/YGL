@@ -21,8 +21,13 @@ use YGL\Users\YGLUser;
 
 class YGLJsonObject implements \JsonSerializable {
     protected $_properties = array();
+    protected $client;
 
-    public function __construct(array $values = NULL) {
+    public function __construct(array $values = NULL, YGLClient $client = NULL) {
+        if (isset($client)) {
+            $this->setClient($client);
+        }
+
         if (isset($values)) {
             foreach ($values as $key => $value) {
                 $this->__set($key, $value);
@@ -112,6 +117,15 @@ class YGLJsonObject implements \JsonSerializable {
             return $this->_properties[$propertyName]['type'];
         }
         return NULL;
+    }
+
+    public function setClient(YGLClient $client) {
+        $this->client = $client;
+        return $this;
+    }
+
+    public function getClient() {
+        return $this->client;
     }
 
     public function JsonSerialize() {

@@ -12,12 +12,12 @@ use ODataQuery\ODataResourceInterface;
 use YGL\Leads\YGLLead;
 use YGL\Leads\YGLLeadCollection;
 use YGL\Properties\YGLProperty;
-use YGL\Request\YGLLeadRequest;
-use YGL\Request\YGLPropertyRequest;
-use YGL\Request\YGLTaskRequest;
+use YGL\Leads\Request\YGLLeadRequest;
+use YGL\Properties\Request\YGLPropertyRequest;
+use YGL\Tasks\Request\YGLTaskRequest;
+use YGL\Users\Request\YGLUserRequest;
 use YGL\Tasks\YGLTask;
 use YGL\Tasks\YGLTaskCollection;
-use YGL\Users\YGLUser;
 
 class YGLClient {
     protected $username;
@@ -98,9 +98,10 @@ class YGLClient {
         return $request->send();
     }
 
-    public function getUsers(YGLProperty $property, YGLUser $user = NULL,
+    public function getUsers(YGLProperty $property, $id = NULL,
                              ODataResourceInterface $query = NULL) {
-
+        $request = new YGLUserRequest($this, $property, $id, $query);
+        return $request->send();
     }
 
 } 

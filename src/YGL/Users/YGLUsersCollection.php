@@ -2,36 +2,32 @@
 /**
  * Created by PhpStorm.
  * User: alexboyce
- * Date: 12/6/14
- * Time: 9:50 PM
+ * Date: 12/26/14
+ * Time: 10:58 AM
  */
 
-namespace YGL\Leads;
+namespace YGL\Users;
 
 
 use YGL\Collection\YGLCollection;
 use YGL\Properties\YGLProperty;
 use YGL\YGLClient;
 
-class YGLLeadCollection extends YGLCollection implements YGLLeadCollectionInterface {
+class YGLUsersCollection extends YGLCollection implements YGLUsersCollectionInterface {
     protected $property;
 
-    public function __construct(YGLClient $client = NULL, array $leads = array()) {
-        parent::__construct();
-        if (isset($client)) {
-            $this->setClient($client);
-        }
-        $this->__set('collection', $leads);
+    public function __construct(YGLClient $client, array $values = array()) {
+        parent::__construct($client);
+        $this->__set('collection', $values);
     }
 
     public function setProperty(YGLProperty $property) {
         if ($property !== $this->property) {
-            if (!isset($this->client) && ($client = $property->getClient())) {
-                $this->setClient($client);
-            }
             $this->property = $property;
             foreach ($this->collection as $item) {
-                $item->setProperty($property);
+                if ($item instanceof YGLUser) {
+                    $item->setProperty($property);
+                }
             }
         }
         return $this;
@@ -41,46 +37,45 @@ class YGLLeadCollection extends YGLCollection implements YGLLeadCollectionInterf
         return $this->property;
     }
 
-    public function append(YGLLead $lead) {
-        // Prefer this client
+    public function append(YGLUser $user) {
         if (isset($this->client)) {
-            $lead->setClient($this->client);
+            $user->setClient($this->getClient());
         }
-        elseif ($client = $lead->getClient()) {
+        elseif ($client = $user->getClient()) {
             $this->setClient($client);
         }
-
-        $this->collection[$lead->id] = $lead;
+        $this->collection[$user->id] = $user;
         return $this;
     }
 
-    public function remove(YGLLead $lead) {
-        unset($this->collection[$lead->id]);
+    public function remove(YGLUser $user) {
+        unset($this->collection[$user->id]);
         return $this;
     }
 
     public function offsetSet($offset, $value) {
-        if (isset($offset) && ($lead = $this->item($offset))) {
+        if (isset($offset) && ($item = $this->item($offset))) {
             $this->collection[$offset] = $value;
         }
         else {
-            if ($value instanceof YGLLead) {
+            if ($value instanceof YGLUser) {
                 $this->append($value);
             }
             else {
-                $this->append(new YGLLead($value, $this->client));
+                $this->append(new YGLUser((array)$value));
             }
         }
+
     }
 
     public function __set($name, $value) {
         if ($name == 'collection' && is_array($value)) {
             foreach ($value as $item) {
-                if ($item instanceof YGLLead) {
+                if ($item instanceof YGLUser) {
                     $this->append($item);
                 }
                 else {
-                    $this->append(new YGLLead((array)$item));
+                    $this->append(new YGLUser((array)$item));
                 }
             }
         }
@@ -92,4 +87,4 @@ class YGLLeadCollection extends YGLCollection implements YGLLeadCollectionInterf
         }
         return NULL;
     }
-} 
+}

@@ -98,11 +98,6 @@ class YGLTaskCollection extends YGLCollection implements YGLTaskCollectionInterf
     unset($this->collection[$task->id]);
   }
 
-  public function clear() {
-    $this->collection = array();
-    return $this;
-  }
-
   public function offsetSet($offset, $value) {
     if (isset($offset) && ($lead = $this->item($offset))) {
       $this->collection[$offset] = $value;
@@ -112,7 +107,7 @@ class YGLTaskCollection extends YGLCollection implements YGLTaskCollectionInterf
         $this->append($value);
       }
       else {
-        $this->append(new YGLTask($value));
+        $this->append(new YGLTask((array)$value));
       }
     }
   }
