@@ -9,7 +9,9 @@
 namespace YGL\Collection;
 
 
-interface YGLCollectionInterface {
-  public function clear();
-  public function item($id);
+interface YGLCollectionInterface
+{
+    public function clear();
+
+    public function item($id);
 }

@@ -11,23 +11,18 @@ namespace YGL\Leads\ReferralSource;
 
 use YGL\YGLJsonObject;
 
-class YGLReferralSource extends YGLJsonObject {
+class YGLReferralSource extends YGLJsonObject
+{
+    protected $uniqueId = 'leadSourceId';
 
-    public function __construct($values = NULL) {
+    public function __construct($values = null)
+    {
         $this->_properties = array(
-            'leadSourceId'      =>  self::integerProperty(),
-            'leadSourceName'    =>  self::stringProperty(),
-            'leadSourceRank'    =>  self::integerProperty()
+            'leadSourceId' => self::integerProperty(),
+            'leadSourceName' => self::stringProperty(),
+            'leadSourceRank' => self::integerProperty()
         );
 
         parent::__construct((array)$values);
-    }
-
-    public function __get($name) {
-        if ($name == 'id') {
-            return $this->_properties['leadSourceId']['value'];
-        }
-
-        return parent::__get($name);
     }
 } 

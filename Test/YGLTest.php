@@ -20,7 +20,7 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
      */
     public function testConnection() {
         $ygl = new YGLClient($this->accessToken);
-        $request = new \YGL\Request\YGLRequest($ygl);
+        $request = $this->getMockForAbstractClass('\YGL\Request\YGLRequest', array($ygl));
         $request->setFunction('properties');
         $response = $request->send();
         $this->assertTrue($response->isSuccess());
@@ -30,20 +30,21 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
     /**
      * @depends testConnection
      * @param YGLClient $ygl
-     * @return \YGL\Properties\YGLPropertyCollection
+     * @return \YGL\Properties\Collection\YGLPropertyCollection
      */
     public function testPropertiesList(YGLClient $ygl) {
         $properties = $ygl->getProperties();
+        $properties->setClient($ygl);
         $this->assertNotEmpty($properties);
         return $properties;
     }
 
     /**
      * @depends testPropertiesList
-     * @param \YGL\Properties\YGLPropertyCollection $properties
+     * @param \YGL\Properties\Collection\YGLPropertyCollection $properties
      * @return \YGL\Properties\YGLProperty
      */
-    public function testPropertiesGet(\YGL\Properties\YGLPropertyCollection $properties) {
+    public function testPropertiesGet(\YGL\Properties\Collection\YGLPropertyCollection $properties) {
         $property = $properties->current();
         $ygl = $properties->getClient();
         $this->assertTrue($ygl instanceof YGLClient);
@@ -57,10 +58,10 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @depends testPropertiesList
-     * @param \YGL\Properties\YGLPropertyCollection $properties
-     * @return \YGL\Leads\YGLLeadCollection
+     * @param \YGL\Properties\Collection\YGLPropertyCollection $properties
+     * @return \YGL\Leads\Collection\YGLLeadCollection
      */
-    public function testLeadsList(\YGL\Properties\YGLPropertyCollection $properties) {
+    public function testLeadsList(\YGL\Properties\Collection\YGLPropertyCollection $properties) {
         $property = $properties->current();
         $leads = $property->getLeads();
         $this->assertNotEmpty($leads);
@@ -69,9 +70,9 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @depends testLeadsList
-     * @param \YGL\Leads\YGLLeadCollection $leads
+     * @param \YGL\Leads\Collection\YGLLeadCollection $leads
      */
-    public function testLeadsGet(\YGL\Leads\YGLLeadCollection $leads) {
+    public function testLeadsGet(\YGL\Leads\Collection\YGLLeadCollection $leads) {
          $lead = $leads->rewind()->current();
          $get_lead = $lead->getProperty()->getLeads($lead->id);
          $this->assertEquals($lead->id, $get_lead->id);
@@ -81,10 +82,10 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @depends testPropertiesList
-     * @param \YGL\Properties\YGLPropertyCollection $properties
+     * @param \YGL\Properties\Collection\YGLPropertyCollection $properties
      * @return \YGL\Leads\YGLLead
      */
-    public function testLeadPost(\YGL\Properties\YGLPropertyCollection $properties) {
+    public function testLeadPost(\YGL\Properties\Collection\YGLPropertyCollection $properties) {
         $property = $properties->current();
         $lead = new \YGL\Leads\YGLLead(array(
             'addedOn' => new DateTime(),
@@ -161,7 +162,7 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
     /**
      * @depends testPropertiesGet
      * @param \YGL\Properties\YGLProperty $property
-     * @return $this|bool|mixed|\YGL\Response\YGLResponse|\YGL\Users\YGLUser
+     * @return $this|bool|mixed|\YGL\Response\YGLResponse|\YGL\Users\YGLUser|\YGL\Users\Collection\YGLUsersCollection
      */
     public function testUsersList(\YGL\Properties\YGLProperty $property) {
         $users = $property->getUsers();
@@ -171,10 +172,10 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @depends testUsersList
-     * @param \YGL\Users\YGLUsersCollection $users
+     * @param \YGL\Users\Collection\YGLUsersCollection $users
      * @TODO Getting uses by ID is not yet supported, test once it is
      */
-    /*public function testUserGet(\YGL\Users\YGLUsersCollection $users) {
+    /*public function testUserGet(\YGL\Users\Collection\YGLUsersCollection $users) {
         $user = $users->current();
         $property = $users->getProperty();
         $get_user = $property->getUsers($user->id);

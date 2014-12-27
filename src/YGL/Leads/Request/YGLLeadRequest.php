@@ -10,17 +10,17 @@ namespace YGL\Leads\Request;
 
 
 use ODataQuery\ODataResourceInterface;
-use YGL\Leads\YGLLead;
-use YGL\Leads\YGLLeadCollection;
 use YGL\Properties\YGLProperty;
-use YGL\Request\YGLRequest;
+use YGL\Request\YGLCollectionRequest;
 
-class YGLLeadRequest extends YGLRequest {
+class YGLLeadRequest extends YGLCollectionRequest
+{
+    protected $collectionClass = 'YGL\Leads\Collection\YGLLeadCollection';
     protected $property;
     protected $id;
 
-    public function __construct($clientToken = FALSE, YGLProperty $property = NULL,
-                                $id = NULL, ODataResourceInterface $query = NULL) {
+    public function __construct($clientToken = null, YGLProperty $property = null, $id = null,
+                                ODataResourceInterface $query = null) {
         parent::__construct($clientToken, $query);
         if (isset($property)) {
             $this->setProperty($property);
@@ -28,49 +28,44 @@ class YGLLeadRequest extends YGLRequest {
         $this->id($id);
     }
 
-    public function id($id = NULL) {
+    public function id($id = null)
+    {
         $this->id = $id;
+        $this->refreshFunction();
+
+        return $this;
+    }
+
+    public function refreshFunction()
+    {
         if (isset($this->property)) {
-            $function = isset($id)
-              ? 'properties/'.$this->property->id.'/leads/'.$id
-              : 'properties/'.$this->property->id.'/leads';
+            $function = isset($this->id)
+                ? 'properties/' . $this->property->id . '/leads/' . $this->id
+                : 'properties/' . $this->property->id . '/leads';
             $this->setFunction($function);
         }
         return $this;
     }
 
-    public function setProperty(YGLProperty $property) {
+    public function setProperty(YGLProperty $property)
+    {
         $this->property = $property;
-        $this->id($this->id); // Refresh the function
-        return $this;
+
+        return $this->refreshFunction();
     }
 
-    public function getProperty() {
+    public function getProperty()
+    {
         return $this->property;
     }
 
-    public function send() {
+    public function send()
+    {
         $response = parent::send();
-        if ($response->isSuccess()) {
-            $property = $this->getProperty();
-            // Response Code 201 means posted data was successfully added
-            $body = $response->getResponseCode() != 201
-              ? json_decode($response->getBody())
-              : json_decode($response->getResponse()->getRawResponse());
-
-            if (is_array($body)) {
-                $leads = new YGLLeadCollection($this->getClient(), $body);
-                $leads->rewind();
-                $leads->setProperty($property);
-                // Unlike properties, leads always returns a collection (for now)
-                // To make this library behave in a constant fashion, the following line
-                // will correct this behavior
-                return $leads->count() > 1 ? $leads->rewind() : $leads->rewind()->current();
-            }
-            $lead = new YGLLead((array)$body, $this->getClient());
-            $lead->setProperty($property);
-            return $lead;
+        if (isset($this->property) && method_exists($response, 'setProperty')) {
+            $response->setProperty($this->getProperty());
         }
+
         return $response;
     }
 } 

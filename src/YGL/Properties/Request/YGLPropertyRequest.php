@@ -10,42 +10,25 @@ namespace YGL\Properties\Request;
 
 use ODataQuery\ODataResourceInterface;
 use ODataQuery\Pager\ODataQueryPager;
-use YGL\Properties\YGLProperty;
-use YGL\Properties\YGLPropertyCollection;
-use YGL\Request\YGLRequest;
+use YGL\Request\YGLCollectionRequest;
 
-class YGLPropertyRequest extends YGLRequest {
+class YGLPropertyRequest extends YGLCollectionRequest
+{
+    protected $collectionClass = '\YGL\Properties\Collection\YGLPropertyCollection';
+    protected $id;
 
-    public function __construct($clientToken = NULL, $id = NULL, $limit = 20,
-                                ODataResourceInterface $query = NULL) {
-        parent::__construct($clientToken, $query);
-        $this->id($id);
+    public function __construct(
+        $clientToken = null,
+        $id = null,
+        $limit = 20,
+        ODataResourceInterface $query = null
+    ) {
+        parent::__construct($clientToken, $id, $query);
         $this->pager(new ODataQueryPager($limit));
     }
 
-    public function id($id = NULL) {
-        $this->setFunction(isset($id) ? 'properties/'.$id : 'properties');
-        return $this;
-    }
-
-    public function send() {
-        $response = parent::send();
-        if ($response->isSuccess()) {
-            $body = $response->getResponseCode() != 201
-              ? json_decode($response->getBody())
-              : json_decode($response->getResponse()->getRawResponse());
-            if (is_array($body)) {
-                $properties = new YGLPropertyCollection($this->getClient(), $body);
-                // Currently, the default behavior of the API returns a single
-                // object which is converted to a YGLProperty. But if an instance
-                // would ever occur when the result is an array with one object,
-                // we would want that single object returned to conform to the
-                // standard behavior.
-                return $properties->count() > 0 ? $properties->rewind()  : $properties->rewind()->current();
-            }
-            return new YGLProperty((array)$body, $this->getClient());
-        }
-
-        return $response;
+    public function refreshFunction()
+    {
+        return $this->setFunction(isset($this->id) ? 'properties/' . $this->id : 'properties');
     }
 } 

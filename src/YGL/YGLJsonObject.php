@@ -12,18 +12,21 @@ namespace YGL;
 use YGL\Leads\Address\YGLAddress;
 use YGL\Leads\Contact\YGLContact;
 use YGL\Leads\Notes\YGLLeadNotes;
-use YGL\Leads\ReferralSource\YGLReferralSourceCollection;
+use YGL\Leads\ReferralSource\Collection\YGLReferralSourceCollection;
 use YGL\Leads\Resident\YGLLeadResident;
 use YGL\Leads\YGLLead;
 use YGL\Properties\YGLProperty;
 use YGL\Tasks\YGLTask;
 use YGL\Users\YGLUser;
 
-class YGLJsonObject implements \JsonSerializable {
+class YGLJsonObject implements \JsonSerializable
+{
     protected $_properties = array();
     protected $client;
+    protected $uniqueId;
 
-    public function __construct(array $values = NULL, YGLClient $client = NULL) {
+    public function __construct(array $values = null, YGLClient $client = null)
+    {
         if (isset($client)) {
             $this->setClient($client);
         }
@@ -35,21 +38,24 @@ class YGLJsonObject implements \JsonSerializable {
         }
     }
 
-    static protected function integerProperty($default = NULL) {
+    static protected function integerProperty($default = null)
+    {
         return array(
             'type' => 'int',
             'value' => $default
         );
     }
 
-    static protected function booleanProperty($default = NULL) {
+    static protected function booleanProperty($default = null)
+    {
         return array(
             'type' => 'boolean',
             'value' => $default
         );
     }
 
-    static protected function stringProperty($length = 50, $default = NULL) {
+    static protected function stringProperty($length = 50, $default = null)
+    {
         return array(
             'type' => 'string',
             'length' => $length,
@@ -57,15 +63,19 @@ class YGLJsonObject implements \JsonSerializable {
         );
     }
 
-    static protected function customProperty($className, $default = NULL,
-                                             array $extra = array()) {
+    static protected function customProperty(
+        $className,
+        $default = null,
+        array $extra = array()
+    ) {
         return array(
-            'type' => '\\'.$className,
+            'type' => '\\' . $className,
             'value' => $default
         ) + $extra;
     }
 
-    static protected function datetimeProperty($default = NULL) {
+    static protected function datetimeProperty($default = null)
+    {
         if (isset($default) && is_string($default)) {
             $default = new \DateTime($default);
         }
@@ -73,74 +83,92 @@ class YGLJsonObject implements \JsonSerializable {
         return self::customProperty('DateTime', $default);
     }
 
-    static protected function propertyProperty(YGLProperty $default = NULL) {
+    static protected function propertyProperty(YGLProperty $default = null)
+    {
         return self::customProperty('YGL\Properties\YGLProperty', $default);
     }
 
-    static protected function leadProperty(YGLLead $default = NULL) {
+    static protected function leadProperty(YGLLead $default = null)
+    {
         return self::customProperty('YGL\Leads\YGLLead', $default);
     }
 
-    static protected function addressProperty(YGLAddress $default = NULL) {
+    static protected function addressProperty(YGLAddress $default = null)
+    {
         return self::customProperty('YGL\Leads\Address\YGLAddress', $default);
     }
 
-    static protected function contactProperty(YGLContact $default = NULL) {
+    static protected function contactProperty(YGLContact $default = null)
+    {
         return self::customProperty('YGL\Leads\Contact\YGLContact', $default);
     }
 
-    static protected function residentProperty(YGLLeadResident $default = NULL)
+    static protected function residentProperty(YGLLeadResident $default = null)
     {
         return self::customProperty('YGL\Leads\Resident\YGLLeadResident', $default);
     }
 
     static protected function referralSourceCollectionProperty(
-      YGLReferralSourceCollection $default = NULL) {
-        return self::customProperty('YGL\Leads\ReferralSource\YGLReferralSourceCollection',
-          $default);
+        YGLReferralSourceCollection $default = null
+    ) {
+        return self::customProperty(
+            'YGL\Leads\ReferralSource\Collection\YGLReferralSourceCollection',
+            $default
+        );
     }
 
-    static protected function notesProperty(YGLLeadNotes $default = NULL) {
+    static protected function notesProperty(YGLLeadNotes $default = null)
+    {
         return self::customProperty('YGL\Leads\Notes\YGLLeadNotes', $default);
     }
 
-    static protected function taskProperty(YGLTask $default = NULL) {
+    static protected function taskProperty(YGLTask $default = null)
+    {
         return self::customProperty('YGL\Tasks\YGLTask', $default);
     }
 
-    static protected function userProperty(YGLUser $default = NULL) {
+    static protected function userProperty(YGLUser $default = null)
+    {
         return self::customProperty('YGL\Users\YGLUser', $default);
     }
 
-    public function getType($propertyName) {
+    public function getType($propertyName)
+    {
         if (isset($this->_properties[$propertyName])) {
             return $this->_properties[$propertyName]['type'];
         }
-        return NULL;
+
+        return null;
     }
 
-    public function setClient(YGLClient $client) {
+    public function setClient(YGLClient $client)
+    {
         $this->client = $client;
+
         return $this;
     }
 
-    public function getClient() {
+    public function getClient()
+    {
         return $this->client;
     }
 
-    public function JsonSerialize() {
+    public function JsonSerialize()
+    {
         $data = array();
 
         foreach ($this->_properties as $name => $property) {
-            if ($property['value'] == NULL) {
+            if ($property['value'] == null) {
                 continue;
             }
             $data[ucfirst($name)] = $property['value'];
         }
+
         return $data;
     }
 
-    public function __set($name, $value) {
+    public function __set($name, $value)
+    {
         $name = lcfirst($name);
         if (!empty($this->_properties[$name])) {
             $type = $this->_properties[$name]['type'];
@@ -150,29 +178,38 @@ class YGLJsonObject implements \JsonSerializable {
                     $this->_properties[$name]['value'] = (int)$value;
                     break;
                 case 'boolean':
-                    $this->_properties[$name]['value'] = $value == TRUE;
+                    $this->_properties[$name]['value'] = $value == true;
                     break;
                 case 'string':
-                    $this->_properties[$name]['value'] = substr($value, 0,
-                      $this->_properties[$name]['length']);
+                    $this->_properties[$name]['value'] = substr(
+                        $value,
+                        0,
+                        $this->_properties[$name]['length']
+                    );
                     break;
                 default:
                     if (is_string($value) && strlen($value) < 1) {
-                        $value = NULL;
+                        $value = null;
                     }
 
                     $this->_properties[$name]['value'] = $value instanceof $type
-                      ? $value : new $type($value);
+                        ? $value : new $type($value);
                     break;
             }
         }
     }
 
-    public function __get($name) {
+    public function __get($name)
+    {
         $name = lcfirst($name);
+        if ($name == 'id') {
+            return isset($this->_properties[$this->uniqueId]) ? $this->_properties[$this->uniqueId]['value'] : null;
+        }
+
         if (!empty($this->_properties[$name])) {
             return $this->_properties[$name]['value'];
         }
-        return NULL;
+
+        return null;
     }
 } 

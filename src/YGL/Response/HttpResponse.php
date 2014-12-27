@@ -9,7 +9,8 @@
 namespace YGL\Response;
 
 
-class HttpResponse {
+class HttpResponse
+{
     protected $rawResponse;
     protected $rawHeader;
     protected $requestInfo = array();
@@ -61,32 +62,39 @@ class HttpResponse {
     );
 
 
-    public function __construct($rawResponse = NULL, $requestInfo = NULL) {
+    public function __construct($rawResponse = null, $requestInfo = null)
+    {
         if (isset($requestInfo)) {
             $this->setRequestInfo($requestInfo);
         }
 
         if (isset($rawResponse)) {
-            $this->parse($rawResponse, isset($this->requestInfo['header_size']) && $this->getResponseCode() != 201 ? $this->requestInfo['header_size'] : 0);
+            $this->parse($rawResponse,
+                isset($this->requestInfo['header_size']) && $this->getResponseCode(
+                ) != 201 ? $this->requestInfo['header_size'] : 0
+            );
         }
 
     }
 
-    public function setRequestInfo($requestInfo) {
+    public function setRequestInfo($requestInfo)
+    {
         if (is_resource($requestInfo) && get_resource_type($requestInfo, 'curl')) {
             $this->requestInfo = curl_getinfo($requestInfo);
-        }
-        else {
+        } else {
             $this->requestInfo = (array)$requestInfo;
         }
+
         return $this;
     }
 
-    public function getRequestInfo() {
+    public function getRequestInfo()
+    {
         return $this->requestInfo;
     }
 
-    public function parse($rawResonse, $headerLength = 0) {
+    public function parse($rawResonse, $headerLength = 0)
+    {
         $this->rawResponse = $rawResonse;
         $this->rawHeader = substr($rawResonse, 0, $headerLength);
         $this->response = substr($rawResonse, $headerLength);
@@ -94,7 +102,7 @@ class HttpResponse {
         $headers = array();
         if (!empty($header_lines)) {
             foreach ($header_lines as $line) {
-                if (strpos($line, ':') != FALSE) {
+                if (strpos($line, ':') != false) {
                     $header = explode(':', $line);
                     $headers[trim($header[0])] = trim($header[1]);
                 }
@@ -103,31 +111,38 @@ class HttpResponse {
         $this->headers = $headers;
     }
 
-    public function getResponseCode() {
-        return isset($this->requestInfo['http_code']) ? $this->requestInfo['http_code'] : FALSE;
+    public function getResponseCode()
+    {
+        return isset($this->requestInfo['http_code']) ? $this->requestInfo['http_code'] : false;
     }
 
-    static public function getResponseStatus($responseCode) {
-        return isset(self::$HTTP_RESPONSE_CODES[$responseCode]) ? self::$HTTP_RESPONSE_CODES[$responseCode] : FALSE;
+    static public function getResponseStatus($responseCode)
+    {
+        return isset(self::$HTTP_RESPONSE_CODES[$responseCode]) ? self::$HTTP_RESPONSE_CODES[$responseCode] : false;
     }
 
-    public function getResonseBody() {
+    public function getResonseBody()
+    {
         return $this->response;
     }
 
-    public function getRawHeader() {
+    public function getRawHeader()
+    {
         return $this->rawHeader;
     }
 
-    public function getHeaders() {
+    public function getHeaders()
+    {
         return $this->headers;
     }
 
-    public function getRawResponse() {
+    public function getRawResponse()
+    {
         return $this->rawResponse;
     }
 
-    public function getRequestHeader() {
-        return isset($this->requestInfo['request_header']) ? $this->requestInfo['request_header'] : FALSE;
+    public function getRequestHeader()
+    {
+        return isset($this->requestInfo['request_header']) ? $this->requestInfo['request_header'] : false;
     }
 } 

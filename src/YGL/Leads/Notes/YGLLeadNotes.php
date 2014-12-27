@@ -11,13 +11,15 @@ namespace YGL\Leads\Notes;
 
 use YGL\YGLJsonObject;
 
-class YGLLeadNotes extends YGLJsonObject {
+class YGLLeadNotes extends YGLJsonObject
+{
 
-    public function __construct($values = NULL) {
+    public function __construct($values = null)
+    {
         $this->_properties = array(
-            'notes'     =>  self::stringProperty(255),
-            'updatedBy' =>  self::stringProperty(),
-            'updatedOn' =>  self::datetimeProperty()
+            'notes' => self::stringProperty(255),
+            'updatedBy' => self::stringProperty(),
+            'updatedOn' => self::datetimeProperty()
         );
 
         parent::__construct((array)$values);

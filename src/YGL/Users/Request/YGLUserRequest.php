@@ -11,16 +11,20 @@ namespace YGL\Users\Request;
 
 use ODataQuery\ODataResourceInterface;
 use YGL\Properties\YGLProperty;
-use YGL\Request\YGLRequest;
-use YGL\Users\YGLUser;
-use YGL\Users\YGLUsersCollection;
+use YGL\Request\YGLCollectionRequest;
 
-class YGLUserRequest extends YGLRequest {
+class YGLUserRequest extends YGLCollectionRequest
+{
+    protected $collectionClass = 'YGL\Users\Collection\YGLUsersCollection';
     protected $property;
     protected $id;
 
-    public function __construct($clientToken = FALSE, YGLProperty $property = NULL, $id = NULL,
-        ODataResourceInterface $query = NULL) {
+    public function __construct(
+        $clientToken = false,
+        YGLProperty $property = null,
+        $id = null,
+        ODataResourceInterface $query = null
+    ) {
         parent::__construct($clientToken, $query);
         if (isset($property)) {
             $this->setProperty($property);
@@ -28,45 +32,39 @@ class YGLUserRequest extends YGLRequest {
         }
     }
 
-    public function setProperty(YGLProperty $property) {
+    public function setProperty(YGLProperty $property)
+    {
         $this->property = $property;
-        $this->id($this->id); // Refresh the function
+        $this->refreshFunction();
+
         return $this;
     }
 
-    public function getProperty() {
+    public function getProperty()
+    {
         return $this->property;
     }
 
-    public function id($id = NULL) {
-        $this->id = $id;
+    public function refreshFunction()
+    {
         if ($property = $this->getProperty()) {
-            $function = 'properties/'.$property->id.'/users';
-            if (isset($id)) {
-                $function .= '/'.$id;
+            $function = 'properties/' . $property->id . '/users';
+            if (isset($this->id)) {
+                $function .= '/' . $this->id;
             }
             $this->setFunction($function);
         }
+
         return $this;
     }
 
-    public function send() {
+    public function send()
+    {
         $response = parent::send();
-        if ($response->isSuccess()) {
-            $body = $response->getResponseCode() != 201
-                ? json_decode($response->getBody())
-                : json_decode($response->getResponse()->getRawResponse());
-            if (is_array($body)) {
-                $users = new YGLUsersCollection($this->getClient(), $body);
-                if (isset($this->property)) {
-                    $users->setProperty($this->getProperty());
-                }
-                return $users->count() > 1 ? $users->rewind() : $users->rewind()->current();
-            }
-            else {
-                return new YGLUser((array)$body, $this->getClient());
-            }
+        if (isset($this->property) && method_exists($response, 'setProperty')) {
+            $response->setProperty($this->getProperty());
         }
+
         return $response;
 
     }
