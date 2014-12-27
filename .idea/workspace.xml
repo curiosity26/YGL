@@ -1,26 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c86719b-7e52-463e-9007-e5d80853e6bc" name="Default" comment="Cleanup formatting that allows response JSON data to more easily convert to PHP Objects">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/YGL.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/YGL/Users/Request/YGLUserRequest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/YGL/Users/YGLUsersCollection.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/YGL/Users/YGLUsersCollectionInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/YGL/Request/YGLLeadRequest.php" afterPath="$PROJECT_DIR$/src/YGL/Leads/Request/YGLLeadRequest.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/YGL/Request/YGLPropertyRequest.php" afterPath="$PROJECT_DIR$/src/YGL/Properties/Request/YGLPropertyRequest.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/YGL/Request/YGLTaskRequest.php" afterPath="$PROJECT_DIR$/src/YGL/Tasks/Request/YGLTaskRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/YGL/YGLClient.php" afterPath="$PROJECT_DIR$/src/YGL/YGLClient.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/YGL/Collection/YGLCollection.php" afterPath="$PROJECT_DIR$/src/YGL/Collection/YGLCollection.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/YGL/YGLJsonObject.php" afterPath="$PROJECT_DIR$/src/YGL/YGLJsonObject.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/YGL/Leads/YGLLead.php" afterPath="$PROJECT_DIR$/src/YGL/Leads/YGLLead.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/YGL/Leads/YGLLeadCollection.php" afterPath="$PROJECT_DIR$/src/YGL/Leads/YGLLeadCollection.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/YGL/Properties/YGLProperty.php" afterPath="$PROJECT_DIR$/src/YGL/Properties/YGLProperty.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/YGL/Properties/YGLPropertyCollection.php" afterPath="$PROJECT_DIR$/src/YGL/Properties/YGLPropertyCollection.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/YGL/Tasks/YGLTask.php" afterPath="$PROJECT_DIR$/src/YGL/Tasks/YGLTask.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/YGL/Tasks/YGLTaskCollection.php" afterPath="$PROJECT_DIR$/src/YGL/Tasks/YGLTaskCollection.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/YGLTest.php" afterPath="$PROJECT_DIR$/Test/YGLTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/YGL/Users/YGLUser.php" afterPath="$PROJECT_DIR$/src/YGL/Users/YGLUser.php" />
+    <list default="true" id="0c86719b-7e52-463e-9007-e5d80853e6bc" name="Default" comment="Adding Users objects and further refining file organization">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/YGL.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="YGL.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,21 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="YGLTest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Test/YGLTest.php">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-82.5" vertical-offset="105" max-vertical-offset="2790">
-              <caret line="144" column="89" selection-start-line="144" selection-start-column="89" selection-end-line="144" selection-end-column="89" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="YGLClient.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/YGL/YGLClient.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13043478" vertical-offset="0" max-vertical-offset="1470">
-              <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.36217305" vertical-offset="0" max-vertical-offset="840">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -88,51 +62,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/autoload.php" />
-        <option value="$PROJECT_DIR$/YGL.php" />
-        <option value="$PROJECT_DIR$/Request/OData/Filter.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/Request/OData/composer.json" />
-        <option value="$PROJECT_DIR$/YGLClient.php" />
-        <option value="$PROJECT_DIR$/YGLJsonObject.php" />
-        <option value="$PROJECT_DIR$/Collection/YGLCollection.php" />
-        <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/Request/HttpRequest.php" />
-        <option value="$PROJECT_DIR$/Request/YGLRequest.php" />
-        <option value="$PROJECT_DIR$/Response/HttpResponse.php" />
-        <option value="$PROJECT_DIR$/Response/YGLResponse.php" />
-        <option value="$PROJECT_DIR$/Leads/YGLLeadCollection.php" />
-        <option value="$PROJECT_DIR$/Leads/YGLReferralSourceCollection.php" />
-        <option value="$PROJECT_DIR$/Properties/YGLPropertyCollection.php" />
-        <option value="$PROJECT_DIR$/Leads/YGLLeadResident.php" />
-        <option value="$PROJECT_DIR$/Leads/YGLContact.php" />
-        <option value="$PROJECT_DIR$/Leads/YGLAddress.php" />
-        <option value="$PROJECT_DIR$/Leads/YGLLeadNotes.php" />
-        <option value="$PROJECT_DIR$/Leads/YGLLead.php" />
-        <option value="$PROJECT_DIR$/Leads/YGLReferralSource.php" />
-        <option value="$PROJECT_DIR$/Properties/YGLProperty.php" />
-        <option value="$PROJECT_DIR$/Tasks/YGLTask.php" />
-        <option value="$PROJECT_DIR$/Request/YGLLeadRequest.php" />
-        <option value="$PROJECT_DIR$/Request/YGLPropertyRequest.php" />
-        <option value="$PROJECT_DIR$/src/YGL/Request/YGLTaskRequest.php" />
-        <option value="$PROJECT_DIR$/src/YGL/Users/YGLUsersCollectionInterface.php" />
-        <option value="$PROJECT_DIR$/src/YGL/Collection/YGLCollection.php" />
-        <option value="$PROJECT_DIR$/src/YGL/Properties/YGLPropertyCollection.php" />
-        <option value="$PROJECT_DIR$/src/YGL/Tasks/YGLTaskCollection.php" />
-        <option value="$PROJECT_DIR$/src/YGL/Leads/YGLLeadCollection.php" />
-        <option value="$PROJECT_DIR$/src/YGL/Users/YGLUsersCollection.php" />
-        <option value="$PROJECT_DIR$/src/YGL/YGLJsonObject.php" />
-        <option value="$PROJECT_DIR$/src/YGL/Tasks/YGLTask.php" />
-        <option value="$PROJECT_DIR$/src/YGL/Leads/YGLLead.php" />
-        <option value="$PROJECT_DIR$/src/YGL/Users/YGLUser.php" />
-        <option value="$PROJECT_DIR$/src/YGL/Properties/YGLProperty.php" />
-        <option value="$PROJECT_DIR$/src/YGL/Request/YGLUserRequest.php" />
-        <option value="$PROJECT_DIR$/Test/YGLTest.php" />
         <option value="$PROJECT_DIR$/src/YGL/Leads/Request/YGLLeadRequest.php" />
-        <option value="$PROJECT_DIR$/src/YGL/Properties/Request/YGLPropertyRequest.php" />
         <option value="$PROJECT_DIR$/src/YGL/Tasks/Request/YGLTaskRequest.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Collection/YGLCollection.php" />
         <option value="$PROJECT_DIR$/src/YGL/Users/Request/YGLUserRequest.php" />
-        <option value="$PROJECT_DIR$/src/YGL/YGLClient.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Users/Collection/YGLUsersCollection.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Tasks/Collection/YGLTaskCollection.php" />
+        <option value="$PROJECT_DIR$/Test/YGLTest.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/CurrentLivingSituations/YGLCurrentLivingSituations.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/CurrentLivingSituations/Collection/YGLCurrentLivingSituationCollection.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/CurrentLivingSituations/YGLCurrentLivingSituationsRequest.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/CurrentLivingSituations/Request/YGLCurrentLivingSituationsRequest.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/FamilyStatuses/Collection/YGLFamilyRequestCollection.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/FamilyStatuses/Request/YGLFamilyStatusesRequest.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/FundingTypes/Collection/YGLFundingTypeCollection.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/FundingTypes/Request/YGLFundingTypesRequest.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/LeadPriortities/Collection/YGLLeadPriorityCollection.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/LeadPriortities/Request/YGLLeadPrioritiesRequest.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/MemoryLosses/Collection/YGLMemoryLossCollection.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/MemoryLosses/Request/YGLMemoryLossesRequest.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/RelationsToResident/Collection/YGLRelationToResidentCollection.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/RelationsToResident/Request/YGLRelationsToResidentRequest.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/TaskTypes/Collection/YGLTaskTypesCollection.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/TaskTypes/Request/YGLTaskTypesRequest.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/ApartmentTypes/Collection/YGLApartmentTypeCollection.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/ApartmentTypes/Request/YGLApartmentTypeRequest.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Leads/Address/YGLAddress.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Leads/Collection/YGLLeadCollection.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Leads/Contact/YGLContact.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Leads/ReferralSource/YGLReferralSource.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Leads/Resident/YGLLeadResident.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Properties/YGLProperty.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Tasks/YGLTask.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Users/YGLUser.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/Ambulations/YGLAmbulation.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/Amenities/YGLAmenity.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/ApartmentTypes/YGLApartmentType.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/CareLevels/YGLCareLevel.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/ContactPreferences/YGLContactPreference.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/ContactTimePreferences/YGLContactTimePreference.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/CurrentLivingSituations/YGLCurrentLivingSituation.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/FamilyStatuses/YGLFamilyStatus.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/FundingTypes/YGLFundingTypes.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/LeadPriortities/YGLLeadPriority.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/MemoryLosses/YGLMemoryLoss.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/RelationsToResident/YGLRelationToResident.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Reference/TaskTypes/YGLTaskType.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Properties/Request/YGLPropertyRequest.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Leads/YGLLead.php" />
+        <option value="$PROJECT_DIR$/src/YGL/YGLJsonObject.php" />
+        <option value="$PROJECT_DIR$/src/YGL/Leads/ReferralSource/Collection/YGLReferralSourceCollection.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -166,6 +146,45 @@
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="873" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="PHP">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Code style issuesJavaScript</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>JavaScript</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -221,11 +240,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
+              <option name="myItemId" value="Test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -240,150 +255,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Users" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Users" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Request" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tasks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Request" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Properties" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Leads" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YGL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Collection" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -400,14 +271,16 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ODataQuery-PHP" />
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
+    <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
+    <property name="LayoutCode.rearrangeEntries" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/YGL/Properties/Request" />
-      <recent name="$PROJECT_DIR$/src/YGL/Leads/Request" />
-      <recent name="$PROJECT_DIR$/src/YGL/Users/Request" />
-      <recent name="$PROJECT_DIR$/src/YGL/Tasks/Request" />
-      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/YGL/Leads/ReferralSource/Collection" />
+      <recent name="$PROJECT_DIR$/src/YGL/Reference/CurrentLivingSituations/Request" />
+      <recent name="$PROJECT_DIR$/src/YGL/Users/Collection" />
+      <recent name="$PROJECT_DIR$/src/YGL/Tasks/Collection" />
+      <recent name="$PROJECT_DIR$/src/YGL/Properties/Collection" />
     </key>
   </component>
   <component name="RestoreUpdateTree">
@@ -666,7 +539,19 @@
       <option name="project" value="LOCAL" />
       <updated>1419397001635</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Adding Users objects and further refining file organization">
+      <created>1419617348226</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1419617348226</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Adding References. Refactoring common code to core classes">
+      <created>1419646727357</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1419646727357</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -691,30 +576,53 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277849" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3277849" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32968882" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2274678" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1971831" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3008963" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32968882" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277849" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32968882" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2274678" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3008963" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -728,6 +636,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
@@ -736,214 +645,451 @@
     <MESSAGE value="Code cleanup and incorporate ODataQuery library" />
     <MESSAGE value="Minor bug fixes in logic. cUrl fixes in HttpRequest and updated YGLResponse/YGLLeadRequest to support successful POSTs." />
     <MESSAGE value="Cleanup formatting that allows response JSON data to more easily convert to PHP Objects" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleanup formatting that allows response JSON data to more easily convert to PHP Objects" />
+    <MESSAGE value="Adding Users objects and further refining file organization" />
+    <MESSAGE value="Adding References. Refactoring common code to core classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding References. Refactoring common code to core classes" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Test/YGLTest.php">
+    <entry file="file://$PROJECT_DIR$/src/YGL/Properties/Collection/YGLPropertyCollection.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="690" max-vertical-offset="1200">
-          <caret line="51" column="70" selection-start-line="51" selection-start-column="70" selection-end-line="51" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="814">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1161">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75652176" vertical-offset="0" max-vertical-offset="575">
-          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/curiosity26/odataquery/src/ODataResourcePath.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.2832981" vertical-offset="607" max-vertical-offset="1080">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Properties/YGLPropertyCollectionInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1826087" vertical-offset="0" max-vertical-offset="575">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="15" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Users/YGLUsersCollectionInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26086956" vertical-offset="0" max-vertical-offset="575">
-          <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Collection/YGLCollectionInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="599">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Properties/YGLPropertyCollection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49565217" vertical-offset="135" max-vertical-offset="1215">
-          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Leads/YGLLeadCollection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.083333" vertical-offset="820" max-vertical-offset="1395">
-          <caret line="81" column="22" selection-start-line="81" selection-start-column="22" selection-end-line="81" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Tasks/YGLTaskCollection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.5026088" vertical-offset="61" max-vertical-offset="2010">
-          <caret line="108" column="12" selection-start-line="108" selection-start-column="12" selection-end-line="108" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Collection/YGLCollection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.1130435" vertical-offset="15" max-vertical-offset="1665">
-          <caret line="87" column="17" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Users/YGLUsersCollection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.875" vertical-offset="180" max-vertical-offset="1350">
-          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
-          <folding>
-            <element signature="e#117#150#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/YGLJsonObject.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="37.916668" vertical-offset="1150" max-vertical-offset="2565">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Leads/YGLLead.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6695652" vertical-offset="0" max-vertical-offset="1515">
-          <caret line="73" column="47" selection-start-line="73" selection-start-column="47" selection-end-line="73" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Tasks/YGLTask.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71304345" vertical-offset="895" max-vertical-offset="1470">
-          <caret line="95" column="34" selection-start-line="95" selection-start-column="34" selection-end-line="95" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Users/YGLUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4678261" vertical-offset="121" max-vertical-offset="705">
-          <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
-          <folding>
-            <element signature="e#116#147#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Request/YGLRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.017391304" vertical-offset="10" max-vertical-offset="1665">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Leads/Request/YGLLeadRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7217391" vertical-offset="505" max-vertical-offset="1080">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Properties/YGLProperty.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5304348" vertical-offset="685" max-vertical-offset="1260">
-          <caret line="71" column="18" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="18" />
-          <folding>
-            <element signature="e#120#158#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Properties/Request/YGLPropertyRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49565217" vertical-offset="0" max-vertical-offset="705">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/Tasks/Request/YGLTaskRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20869565" vertical-offset="0" max-vertical-offset="1455">
-          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.15182187" vertical-offset="0" max-vertical-offset="494">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/YGL/Users/Request/YGLUserRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3652174" vertical-offset="0" max-vertical-offset="1095">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+        <state vertical-scroll-proportion="-31.875" vertical-offset="135" max-vertical-offset="1065">
+          <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
           <folding>
             <element signature="e#125#163#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/YGLTest.php">
+    <entry file="file://$PROJECT_DIR$/src/YGL/YGLClient.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-82.5" vertical-offset="105" max-vertical-offset="2790">
-          <caret line="144" column="89" selection-start-line="144" selection-start-column="89" selection-end-line="144" selection-end-column="89" />
+        <state vertical-scroll-proportion="0.7145749" vertical-offset="517" max-vertical-offset="1995">
+          <caret line="72" column="32" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/YGL/YGLClient.php">
+    <entry file="file://$PROJECT_DIR$/src/YGL/Tasks/Request/YGLTaskRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13043478" vertical-offset="0" max-vertical-offset="1470">
-          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.757085" vertical-offset="886" max-vertical-offset="1440">
+          <caret line="89" column="8" selection-start-line="89" selection-start-column="8" selection-end-line="91" selection-end-column="9" />
+          <folding>
+            <element signature="e#125#163#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/CurrentLivingSituations/Collection/YGLCurrentLivingSituationCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30364373" vertical-offset="0" max-vertical-offset="494">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/FamilyStatuses/Collection/YGLFamilyRequestCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30364373" vertical-offset="0" max-vertical-offset="494">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/FamilyStatuses/Request/YGLFamilyStatusesRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18218623" vertical-offset="0" max-vertical-offset="494">
+          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/CurrentLivingSituations/Request/YGLCurrentLivingSituationsRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42510122" vertical-offset="0" max-vertical-offset="494">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/FundingTypes/Collection/YGLFundingTypeCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30364373" vertical-offset="0" max-vertical-offset="494">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/FundingTypes/Request/YGLFundingTypesRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39473686" vertical-offset="0" max-vertical-offset="494">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/LeadPriortities/Collection/YGLLeadPriorityCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27327934" vertical-offset="0" max-vertical-offset="494">
+          <caret line="14" column="73" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/LeadPriortities/Request/YGLLeadPrioritiesRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39473686" vertical-offset="0" max-vertical-offset="494">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/MemoryLosses/Collection/YGLMemoryLossCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30364373" vertical-offset="0" max-vertical-offset="494">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/MemoryLosses/Request/YGLMemoryLossesRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45546558" vertical-offset="0" max-vertical-offset="494">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/RelationsToResident/Collection/YGLRelationToResidentCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27327934" vertical-offset="0" max-vertical-offset="494">
+          <caret line="14" column="83" selection-start-line="14" selection-start-column="83" selection-end-line="14" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/RelationsToResident/Request/YGLRelationsToResidentRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39473686" vertical-offset="0" max-vertical-offset="494">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/TaskTypes/Collection/YGLTaskTypesCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27327934" vertical-offset="0" max-vertical-offset="494">
+          <caret line="14" column="63" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/TaskTypes/Request/YGLTaskTypesRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39473686" vertical-offset="0" max-vertical-offset="494">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/ApartmentTypes/Collection/YGLApartmentTypeCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30364373" vertical-offset="0" max-vertical-offset="494">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/ApartmentTypes/Request/YGLApartmentTypeRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39473686" vertical-offset="0" max-vertical-offset="494">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Leads/Address/YGLAddress.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0323887" vertical-offset="0" max-vertical-offset="615">
+          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Leads/Collection/YGLLeadCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21255061" vertical-offset="0" max-vertical-offset="630">
+          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+          <folding>
+            <element signature="e#126#159#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Leads/Contact/YGLContact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7874494" vertical-offset="46" max-vertical-offset="540">
+          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Leads/Notes/YGLLeadNotes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27327934" vertical-offset="0" max-vertical-offset="494">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Leads/ReferralSource/YGLReferralSource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6376518" vertical-offset="0" max-vertical-offset="494">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Leads/Resident/YGLLeadResident.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02834008" vertical-offset="121" max-vertical-offset="720">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Properties/YGLProperty.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7874494" vertical-offset="781" max-vertical-offset="1275">
+          <caret line="87" column="5" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Tasks/YGLTask.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7874494" vertical-offset="961" max-vertical-offset="1455">
+          <caret line="98" column="5" selection-start-line="98" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Users/YGLUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7874494" vertical-offset="151" max-vertical-offset="645">
+          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/Ambulations/YGLAmbulation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5769231" vertical-offset="0" max-vertical-offset="494">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/Amenities/YGLAmenity.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5465587" vertical-offset="0" max-vertical-offset="494">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/ApartmentTypes/YGLApartmentType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60728747" vertical-offset="0" max-vertical-offset="494">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="e#135#153#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/CareLevels/YGLCareLevel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30364373" vertical-offset="0" max-vertical-offset="494">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/ContactPreferences/YGLContactPreference.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5465587" vertical-offset="0" max-vertical-offset="494">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/ContactTimePreferences/YGLContactTimePreference.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5465587" vertical-offset="0" max-vertical-offset="494">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/CurrentLivingSituations/YGLCurrentLivingSituation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60728747" vertical-offset="0" max-vertical-offset="494">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="e#144#162#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/FamilyStatuses/YGLFamilyStatus.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60728747" vertical-offset="0" max-vertical-offset="494">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="e#135#153#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/FundingTypes/YGLFundingTypes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5769231" vertical-offset="0" max-vertical-offset="494">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <element signature="e#133#151#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/LeadPriortities/YGLLeadPriority.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60728747" vertical-offset="0" max-vertical-offset="494">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="e#136#154#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/MemoryLosses/YGLMemoryLoss.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60728747" vertical-offset="0" max-vertical-offset="494">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="e#133#151#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/RelationsToResident/YGLRelationToResident.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60728747" vertical-offset="0" max-vertical-offset="494">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="e#140#158#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Reference/TaskTypes/YGLTaskType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5769231" vertical-offset="0" max-vertical-offset="494">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <element signature="e#130#148#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Request/YGLCollectionRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.5833335" vertical-offset="241" max-vertical-offset="795">
+          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+          <folding>
+            <element signature="e#118#156#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Leads/YGLLead.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="13.125" vertical-offset="450" max-vertical-offset="1635">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Properties/Request/YGLPropertyRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.25" vertical-offset="0" max-vertical-offset="510">
+          <caret line="31" column="95" selection-start-line="31" selection-start-column="95" selection-end-line="31" selection-end-column="95" />
+          <folding>
+            <element signature="e#128#166#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Leads/ReferralSource/Collection/YGLReferralSourceCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42510122" vertical-offset="0" max-vertical-offset="494">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Leads/Request/YGLLeadRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08906882" vertical-offset="556" max-vertical-offset="1065">
+          <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+          <folding>
+            <element signature="e#124#162#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/Collection/YGLCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42510122" vertical-offset="0" max-vertical-offset="3090">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/YGL/YGLJsonObject.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.7995954" vertical-offset="0" max-vertical-offset="3240">
+          <caret line="196" column="0" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
+          <folding>
+            <element signature="e#110#143#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/YGLTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.1882591" vertical-offset="0" max-vertical-offset="2805">
+          <caret line="110" column="5" selection-start-line="110" selection-start-column="5" selection-end-line="110" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36217305" vertical-offset="0" max-vertical-offset="840">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
