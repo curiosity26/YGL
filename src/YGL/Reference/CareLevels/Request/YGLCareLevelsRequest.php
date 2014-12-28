@@ -17,7 +17,6 @@ class YGLCareLevelsRequest extends YGLReferenceRequest {
     protected $collectionClass = 'YGL\Reference\CareLevels\Collection\YGLCareLevelCollection';
 
     public function refreshFunction() {
-        $function = isset($this->id) ? 'carelevels/'.$this->id : 'carelevels';
-        return $this->setFunction($function);
+        return $this->setFunction('carelevels');
     }
 }

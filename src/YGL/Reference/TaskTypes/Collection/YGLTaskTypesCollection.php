@@ -12,5 +12,5 @@ namespace YGL\Reference\TaskTypes\Collection;
 use YGL\Collection\YGLCollection;
 
 class YGLTaskTypesCollection extends YGLCollection {
-    protected $itemClass = 'YGL\Reference\TaskTypes\YGLTaskType';
+    protected $itemClass = '\YGL\Reference\TaskTypes\YGLTaskType';
 }

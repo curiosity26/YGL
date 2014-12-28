@@ -18,7 +18,7 @@ abstract class YGLReferenceRequest extends YGLCollectionRequest
 {
     protected $id = 0; //SubscriptionId
 
-    public function __construct(YGLClient $client, $id = NULL, ODataResourceInterface $query)
+    public function __construct(YGLClient $client = NULL, $id = 0, ODataResourceInterface $query = NULL)
     {
         parent::__construct($client, $query);
         $this->id($id);
@@ -33,7 +33,7 @@ abstract class YGLReferenceRequest extends YGLCollectionRequest
     }
 
     public function setFunction($function) {
-        $function = 'reference/'.$function;
+        $function = 'reference/'.$function.'/'.$this->id;
         return parent::setFunction($function);
     }
 }

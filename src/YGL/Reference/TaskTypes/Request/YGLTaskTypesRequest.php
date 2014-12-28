@@ -15,7 +15,6 @@ class YGLTaskTypesRequest extends  YGLReferenceRequest {
     protected $collectionClass = '\YGL\Reference\TaskTypes\Collection\YGLTaskTypeCollection';
 
     public function refreshFunction() {
-        $function = isset($this->id) ? 'tasktypes/'.$this->id : 'tasktypes';
-        return $this->setFunction($function);
+        return $this->setFunction('tasktypes');
     }
 }

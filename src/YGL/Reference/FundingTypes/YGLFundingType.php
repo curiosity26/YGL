@@ -12,7 +12,7 @@ namespace YGL\Reference\FundingTypes;
 use YGL\YGLClient;
 use YGL\YGLJsonObject;
 
-class YGLFundingTypes extends YGLJsonObject {
+class YGLFundingType extends YGLJsonObject {
     protected $uniqueId = 'fundingTypeId';
 
     public function __construct(array $values = array(), YGLClient $client = NULL) {

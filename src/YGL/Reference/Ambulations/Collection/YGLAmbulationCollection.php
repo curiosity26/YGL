@@ -12,5 +12,5 @@ namespace YGL\Reference\Ambulations\Collection;
 use YGL\Collection\YGLCollection;
 
 class YGLAmbulationCollection extends YGLCollection {
-    protected $itemClass = 'YGL\Reference\Ambulations\YGLAmbulation';
+    protected $itemClass = '\YGL\Reference\Ambulations\YGLAmbulation';
 }

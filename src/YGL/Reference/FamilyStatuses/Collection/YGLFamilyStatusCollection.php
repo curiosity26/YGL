@@ -11,6 +11,6 @@ namespace YGL\Reference\FamilyStatuses\Collection;
 
 use YGL\Collection\YGLCollection;
 
-class YGLFamilyRequestCollection extends YGLCollection {
-    protected $itemClass = 'YGL\Reference\FamilyStatuses\YGLFamilyStatus';
+class YGLFamilyStatusCollection extends YGLCollection {
+    protected $itemClass = '\YGL\Reference\FamilyStatuses\YGLFamilyStatus';
 }

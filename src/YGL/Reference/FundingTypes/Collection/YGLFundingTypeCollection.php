@@ -12,5 +12,5 @@ namespace YGL\Reference\FundingTypes\Collection;
 use YGL\Collection\YGLCollection;
 
 class YGLFundingTypeCollection extends YGLCollection {
-    protected $itemClass = 'YGL\Reference\FundingTypes\YGLFundingType';
+    protected $itemClass = '\YGL\Reference\FundingTypes\YGLFundingType';
 }

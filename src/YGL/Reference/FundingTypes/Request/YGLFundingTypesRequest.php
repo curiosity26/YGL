@@ -12,10 +12,9 @@ namespace YGL\Reference\FundingTypes\Request;
 use YGL\Reference\YGLReferenceRequest;
 
 class YGLFundingTypesRequest extends YGLReferenceRequest {
-    protected $collectionClass = 'YGL\Reference\FundingTypes\Collection\YGLFundingTypeCollection';
+    protected $collectionClass = '\YGL\Reference\FundingTypes\Collection\YGLFundingTypeCollection';
 
     public function refreshFunction() {
-        $function = isset($this->id) ? 'fundingtypes/'.$this->id : 'fundingtypes';
-        return $this->setFunction($function);
+        return $this->setFunction('fundingtypes');
     }
 }

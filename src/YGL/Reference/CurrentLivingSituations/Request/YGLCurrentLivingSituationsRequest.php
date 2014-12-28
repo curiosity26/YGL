@@ -12,10 +12,9 @@ namespace YGL\Reference\CurrentLivingSituations\Request;
 use YGL\Reference\YGLReferenceRequest;
 
 class YGLCurrentLivingSituationsRequest extends YGLReferenceRequest {
-    protected $collectionClass = 'YGL\Reference\CurrentLivingSituations\YGLCurrentLivingSituation';
+    protected $collectionClass = '\YGL\Reference\CurrentLivingSituations\Collection\YGLCurrentLivingSituationCollection';
 
     public function refreshFunction() {
-        $function = isset($this->id) ? 'currentlivingsituations/'.$this->id : 'currentlivingsituations';
-        return $this->setFunction($function);
+        return $this->setFunction('currentlivingsituations');
     }
 }

@@ -14,6 +14,19 @@ use YGL\Leads\Collection\YGLLeadCollection;
 use YGL\Properties\YGLProperty;
 use YGL\Leads\Request\YGLLeadRequest;
 use YGL\Properties\Request\YGLPropertyRequest;
+use YGL\Reference\Ambulations\Request\YGLAmbulationRequest;
+use YGL\Reference\Amenities\Request\YGLAmenitiesRequest;
+use YGL\Reference\ApartmentTypes\Request\YGLApartmentTypeRequest;
+use YGL\Reference\CareLevels\Request\YGLCareLevelsRequest;
+use YGL\Reference\ContactPreferences\Request\YGLContactPreferencesRequest;
+use YGL\Reference\ContactTimePreferences\Request\YGLContactTimePreferencesRequest;
+use YGL\Reference\CurrentLivingSituations\Request\YGLCurrentLivingSituationsRequest;
+use YGL\Reference\FamilyStatuses\Request\YGLFamilyStatusesRequest;
+use YGL\Reference\FundingTypes\Request\YGLFundingTypesRequest;
+use YGL\Reference\LeadPriortities\Request\YGLLeadPrioritiesRequest;
+use YGL\Reference\MemoryLosses\Request\YGLMemoryLossesRequest;
+use YGL\Reference\RelationsToResident\Request\YGLRelationsToResidentRequest;
+use YGL\Reference\TaskTypes\Request\YGLTaskTypesRequest;
 use YGL\Tasks\Request\YGLTaskRequest;
 use YGL\Users\Request\YGLUserRequest;
 use YGL\Tasks\YGLTask;
@@ -136,6 +149,75 @@ class YGLClient
     ) {
         $request = new YGLUserRequest($this, $property, $id, $query);
 
+        return $request->send();
+    }
+
+    /**
+     * Reference calls
+     */
+
+    public function getAmbulations($subscriptionId = 0, ODataResourceInterface $query = NULL) {
+        $request = new YGLAmbulationRequest($this, $subscriptionId, $query);
+        return $request->send();
+    }
+
+    public function getAmenities($subscriptionId = 0, ODataResourceInterface $query = NULL) {
+        $request = new YGLAmenitiesRequest($this, $subscriptionId, $query);
+        return $request->send();
+    }
+
+    public function getApartmentTypes($subscriptionId = 0, ODataResourceInterface $query = NULL) {
+        $request = new YGLApartmentTypeRequest($this, $subscriptionId, $query);
+        return $request->send();
+    }
+
+    public function getCareLevels($subscriptionId = 0, ODataResourceInterface $query = NULL) {
+        $request = new YGLCareLevelsRequest($this, $subscriptionId, $query);
+        return $request->send();
+    }
+
+    public function getContactPreferences($subscriptionId = 0, ODataResourceInterface $query = NULL) {
+        $request = new YGLContactPreferencesRequest($this, $subscriptionId, $query);
+        return $request->send();
+    }
+
+    public function getContactTimePreferences($subscriptionId = 0, ODataResourceInterface $query = NULL) {
+        $request = new YGLContactTimePreferencesRequest($this, $subscriptionId, $query);
+        return $request->send();
+    }
+
+    public function getCurrentLivingSituations($subscriptionId = 0, ODataResourceInterface $query = NULL) {
+        $request = new YGLCurrentLivingSituationsRequest($this, $subscriptionId, $query);
+        return $request->send();
+    }
+
+    public function getFamilyStatuses($subscriptionId = 0, ODataResourceInterface $query = NULL) {
+        $request = new YGLFamilyStatusesRequest($this, $subscriptionId, $query);
+        return $request->send();
+    }
+
+    public function getFundingTypes($subscriptionId = 0, ODataResourceInterface $query = NULL) {
+        $request = new YGLFundingTypesRequest($this, $subscriptionId, $query);
+        return $request->send();
+    }
+
+    public function getLeadPriorities($subscriptionId = 0, ODataResourceInterface $query = NULL) {
+        $request = new YGLLeadPrioritiesRequest($this, $subscriptionId, $query);
+        return $request->send();
+    }
+
+    public function getMemoryLosses($subscriptionId = 0, ODataResourceInterface $query = NULL) {
+        $request = new YGLMemoryLossesRequest($this, $subscriptionId, $query);
+        return $request->send();
+    }
+
+    public function getRelationsToResident($subscriptionId = 0, ODataResourceInterface $query = NULL) {
+        $request = new YGLRelationsToResidentRequest($this, $subscriptionId, $query);
+        return $request->send();
+    }
+
+    public function getTaskTypes($subscriptionId = 0, ODataResourceInterface $query = NULL) {
+        $request = new YGLTaskTypesRequest($this, $subscriptionId, $query);
         return $request->send();
     }
 

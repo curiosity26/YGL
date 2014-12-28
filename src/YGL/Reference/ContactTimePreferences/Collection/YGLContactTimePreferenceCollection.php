@@ -13,6 +13,6 @@ use YGL\Collection\YGLCollection;
 
 class YGLContactTimePreferenceCollection extends YGLCollection {
 
-    protected $itemClass = 'YGL\Reference\ContactTimePreferences\YGLContactTimeReference';
+    protected $itemClass = 'YGL\Reference\ContactTimePreferences\YGLContactTimePreference';
 
 }

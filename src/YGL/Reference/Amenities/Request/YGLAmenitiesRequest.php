@@ -15,7 +15,6 @@ class YGLAmenitiesRequest extends YGLReferenceRequest {
     protected $collectionClass = 'YGL\Reference\Amenities\Collection\YGLAmenitiesCollection';
 
     public function refreshFunction() {
-        $function = isset($this->id) ? 'amentities/'.$this->id : 'amenities';
-        return $this->setFunction($function);
+        return $this->setFunction('amenities');
     }
 }

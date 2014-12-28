@@ -12,10 +12,9 @@ namespace YGL\Reference\LeadPriortities\Request;
 use YGL\Reference\YGLReferenceRequest;
 
 class YGLLeadPrioritiesRequest extends YGLReferenceRequest {
-    protected $collectionClass = 'YGL\Reference\LeadPriortities\YGLLeadPriorityCollection';
+    protected $collectionClass = '\YGL\Reference\LeadPriortities\Collection\YGLLeadPriorityCollection';
 
     public function refreshFunction() {
-        $function = isset($this->id) ? 'leadpriorities/'.$this->id : 'leadpriorities';
-        return $this->setFunction($function);
+        return $this->setFunction('leadpriorities');
     }
 }

@@ -15,7 +15,6 @@ class YGLContactPreferencesRequest extends YGLReferenceRequest {
     protected $collectionClass = 'YGL\Reference\ContactPreferences\YGLContactPreference';
 
     public function refreshFunction() {
-        $function = isset($this->id) ? 'contactpreferences/'.$this->id : 'contactpreferences';
-        return $this->setFunction($function);
+        return $this->setFunction('contactpreferences');
     }
 }

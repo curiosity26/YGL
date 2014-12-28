@@ -12,10 +12,9 @@ namespace YGL\Reference\ContactTimePreferences\Request;
 use YGL\Reference\YGLReferenceRequest;
 
 class YGLContactTimePreferencesRequest extends YGLReferenceRequest {
-    protected $collectionClass = 'YGL\Reference\ContactTimePreferences\YGLContactTimePreferenceCollection';
+    protected $collectionClass = 'YGL\Reference\ContactTimePreferences\Collection\YGLContactTimePreferenceCollection';
 
     public function refreshFunction() {
-        $function = isset($this->id) ? 'contacttimepreferences/'.$this->id : 'contacttimepreferences';
-        return $this->setFunction($function);
+        return $this->setFunction('contacttimepreferences');
     }
 }

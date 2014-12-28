@@ -12,5 +12,5 @@ namespace YGL\Reference\LeadPriortities\Collection;
 use YGL\Collection\YGLCollection;
 
 class YGLLeadPriorityCollection extends YGLCollection {
-    protected $itemClass = 'YGL\Reference\LeadPriortities\YGLLeadPriority';
+    protected $itemClass = '\YGL\Reference\LeadPriortities\YGLLeadPriority';
 }

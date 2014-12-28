@@ -12,5 +12,5 @@ namespace YGL\Reference\MemoryLosses\Collection;
 use YGL\Collection\YGLCollection;
 
 class YGLMemoryLossCollection extends YGLCollection {
-    protected $itemClass = 'YGL\Reference\MemoryLosses\YGLMemoryLoss';
+    protected $itemClass = '\YGL\Reference\MemoryLosses\YGLMemoryLoss';
 }

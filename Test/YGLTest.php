@@ -183,5 +183,122 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($user->userName, $get_user->userName);
     }*/
 
+    /**
+     * @depends testConnection
+     * @param YGLClient $ygl
+     */
+    public function testAmbulationsGet(YGLClient $ygl) {
+        $response = $ygl->getAmbulations();
+        $this->assertNotEmpty($response);
+    }
+
+    /**
+     * @depends testConnection
+     * @param YGLClient $ygl
+     */
+    public function testAmenitiesGet(YGLClient $ygl) {
+        $response = $ygl->getAmenities();
+        $this->assertNotEmpty($response);
+    }
+
+    /**
+     * @depends testConnection
+     * @param YGLClient $ygl
+     */
+    public function testApartmentTypesGet(YGLClient $ygl) {
+        $response = $ygl->getApartmentTypes();
+        $this->assertNotEmpty($response);
+    }
+
+    /**
+     * @depends testConnection
+     * @param YGLClient $ygl
+     */
+    public function testCareLevelsGet(YGLClient $ygl) {
+        $response = $ygl->getCareLevels();
+        $this->assertNotEmpty($response);
+    }
+
+    /**
+     * @depends testConnection
+     * @param YGLClient $ygl
+     */
+    public function testContactPreferencesGet(YGLClient $ygl) {
+        $response = $ygl->getContactPreferences();
+        $this->assertNotEmpty($response);
+    }
+
+    /**
+     * @depends testConnection
+     * @param YGLClient $ygl
+     */
+    public function testContactTimePreferencesGet(YGLClient $ygl) {
+        $response = $ygl->getContactTimePreferences();
+        $this->assertNotEmpty($response);
+    }
+
+    /**
+     * @depends testConnection
+     * @param YGLClient $ygl
+     */
+    public function testCurrentLivingSituationsGet(YGLClient $ygl) {
+        $response = $ygl->getCurrentLivingSituations();
+        $this->assertNotEmpty($response);
+    }
+
+    /**
+     * @depends testConnection
+     * @param YGLClient $ygl
+     */
+    public function testFamilyStatusesGet(YGLClient $ygl) {
+        $response = $ygl->getFamilyStatuses();
+        $this->assertNotEmpty($response);
+    }
+
+    /**
+     * @depends testConnection
+     * @param YGLClient $ygl
+     */
+    public function testFundingTypesGet(YGLClient $ygl) {
+        $response = $ygl->getFundingTypes();
+        $this->assertNotEmpty($response);
+    }
+
+    /**
+     * @depends testConnection
+     * @param YGLClient $ygl
+     */
+    public function testLeadPriorities(YGLClient $ygl) {
+        $response = $ygl->getLeadPriorities();
+        $this->assertNotEmpty($response);
+    }
+
+    /**
+     * @depends testConnection
+     * @param YGLClient $ygl
+     */
+    public function testMemoryLossesGet(YGLClient $ygl) {
+        $response = $ygl->getMemoryLosses();
+        $this->assertNotEmpty($response);
+    }
+
+    /**
+     * @depends testConnection
+     * @param YGLClient $ygl
+     */
+    public function testRelationsToResidentGet(YGLClient $ygl) {
+        $response = $ygl->getRelationsToResident();
+        $this->assertNotEmpty($response);
+    }
+
+    /**
+     * @depends testConnection
+     * @param YGLClient $ygl
+     */
+    public function testTaskTypesGet(YGLClient $ygl) {
+        $response = $ygl->getTaskTypes();
+        $this->assertNotEmpty($response);
+    }
+
 }
  

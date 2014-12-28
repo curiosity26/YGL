@@ -12,5 +12,5 @@ namespace YGL\Reference\RelationsToResident\Collection;
 use YGL\Collection\YGLCollection;
 
 class YGLRelationToResidentCollection extends YGLCollection {
-    protected $itemClass = 'YGL\Reference\RelationsToResident\YGLRelationToResident';
+    protected $itemClass = '\YGL\Reference\RelationsToResident\YGLRelationToResident';
 }

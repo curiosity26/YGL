@@ -15,7 +15,6 @@ class YGLApartmentTypeRequest extends YGLReferenceRequest {
     protected $collectionClass = 'YGL\Reference\ApartmentTypes\Collection\YGLApartmentTypeCollection';
 
     public function refreshFunction() {
-        $function = isset($this->id) ? 'apartmenttypes/'.$this->id : 'apartmenttypes';
-        return $this->setFunction($function);
+        return $this->setFunction('apartmenttypes');
     }
 }
