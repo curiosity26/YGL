@@ -21,10 +21,11 @@ class YGLPropertyRequest extends YGLCollectionRequest
         $clientToken = null,
         $id = null,
         $limit = 20,
+        $page = 0,
         ODataResourceInterface $query = null
     ) {
         parent::__construct($clientToken, $id, $query);
-        $this->pager(new ODataQueryPager($limit));
+        $this->pager(new ODataQueryPager($limit, $page));
     }
 
     public function refreshFunction()

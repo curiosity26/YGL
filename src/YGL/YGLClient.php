@@ -79,9 +79,10 @@ class YGLClient
     public function getProperties(
         $id = null,
         $limit = 20,
+        $page = 0,
         ODataResourceInterface $query = null
     ) {
-        $request = new YGLPropertyRequest($this, $id, $limit, $query);
+        $request = new YGLPropertyRequest($this, $id, $limit, $page, $query);
 
         return $request->send();
     }
