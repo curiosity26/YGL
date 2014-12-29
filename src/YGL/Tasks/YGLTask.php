@@ -11,7 +11,6 @@ namespace YGL\Tasks;
 
 use YGL\Leads\YGLLead;
 use YGL\Properties\YGLProperty;
-use YGL\YGLClient;
 use YGL\YGLJsonObject;
 
 class YGLTask extends YGLJsonObject

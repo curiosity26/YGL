@@ -77,6 +77,20 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
          $get_lead = $lead->getProperty()->getLeads($lead->id);
          $this->assertEquals($lead->id, $get_lead->id);
          $this->assertEquals($lead->primaryContact->id, $get_lead->primaryContact->id);
+
+        // Get By Expansion Query
+
+        $expand = new \ODataQuery\Expand\ODataQueryExpandCollection(array(
+          new \ODataQuery\Expand\ODataQueryExpand('FirstName',
+            new \ODataQuery\Filter\Operators\Logical\ODataEqualsOperator('Bob'))),
+          new \ODataQuery\Expand\ODataQueryExpand('LastName',
+            new \ODataQuery\Filter\Operators\Logical\ODataEqualsOperator('Jones')));
+
+        $query = new \ODataQuery\ODataResource();
+        $query->expand($expand);
+        $get_leads = $lead->getProperty()->getLeads(NULL, $query);
+        var_dump($get_leads);
+        $this->assertNotEmpty($get_leads);
         return $lead;
     }
 
