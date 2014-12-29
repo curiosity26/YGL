@@ -89,7 +89,6 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
         $query = new \ODataQuery\ODataResource();
         $query->expand($expand);
         $get_leads = $lead->getProperty()->getLeads(NULL, $query);
-        var_dump($get_leads);
         $this->assertNotEmpty($get_leads);
         return $lead;
     }
