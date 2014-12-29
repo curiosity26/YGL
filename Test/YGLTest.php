@@ -158,7 +158,8 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
      * @param \YGL\Leads\YGLLead $lead
      * @TODO posting tasks isn't supported by the API yet, but once it is the code is in place
      */
-    /*public function testLeadTasksAdd(\YGL\Leads\YGLLead $lead) {
+    /*
+    public function testLeadTasksAdd(\YGL\Leads\YGLLead $lead) {
         $task = new \YGL\Tasks\YGLTask(array(
           'contactId' => 135224,
           'taskTitle' => 'Test Post Task',
@@ -170,8 +171,11 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
         if ($response instanceof \YGL\Tasks\YGLTask) {
             $this->assertNotNull($response->id);
         }
-    }*/
-
+        else {
+            var_dump($response->getResponse()->getRawResponse());
+        }
+    }
+    */
     /**
      * @depends testPropertiesGet
      * @param \YGL\Properties\YGLProperty $property
@@ -188,14 +192,15 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
      * @param \YGL\Users\Collection\YGLUsersCollection $users
      * @TODO Getting uses by ID is not yet supported, test once it is
      */
-    /*public function testUserGet(\YGL\Users\Collection\YGLUsersCollection $users) {
+    /*
+    public function testUserGet(\YGL\Users\Collection\YGLUsersCollection $users) {
         $user = $users->current();
         $property = $users->getProperty();
         $get_user = $property->getUsers($user->id);
         $this->assertEquals($user->id,$get_user->id);
         $this->assertEquals($user->userName, $get_user->userName);
-    }*/
-
+    }
+    */
     /**
      * @depends testConnection
      * @param YGLClient $ygl

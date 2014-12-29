@@ -186,8 +186,8 @@ search to find a Reference by Id or Name.
 ```
 
 The API can also return a list of users, though currently you can't get a specific user by an ID. This library is built
-to allow getting a User by its ID, but currently the system returns a 500 error. It may be possible to use OData, but
-it hasn't been tested.
+to allow getting a User by its ID, but currently the system returns all users, regardless. It's most likely] possible to
+use OData, but it hasn't been tested.
 
 ```PHP
 <?php
