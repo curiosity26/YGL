@@ -144,26 +144,22 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
     /**
      * @depends testLeadsGet
      * @param \YGL\Leads\YGLLead $lead
-     * @TODO posting tasks isn't supported by the API yet, but once it is the code is in place
+     *
+     * Required fields: "FollowupDate" "TaskTypeId", "TaskTitle"
      */
-    /*
+
     public function testLeadTasksAdd(\YGL\Leads\YGLLead $lead) {
         $task = new \YGL\Tasks\YGLTask(array(
           'contactId' => 135224,
           'taskTitle' => 'Test Post Task',
           'taskTypeId'=> 24,
-          'priorityId' => 2
-
+          'priorityId' => 2,
+          'followupDate' => '01/20/2015'
         ));
         $response = $lead->addTask($task);
-        if ($response instanceof \YGL\Tasks\YGLTask) {
-            $this->assertNotNull($response->id);
-        }
-        else {
-            var_dump($response->getResponse()->getRawResponse());
-        }
+        $this->assertNotNull($response->id);
     }
-    */
+
     /**
      * @depends testPropertiesGet
      * @param \YGL\Properties\YGLProperty $property

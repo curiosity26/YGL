@@ -161,7 +161,12 @@ class YGLJsonObject implements \JsonSerializable
             if ($property['value'] == null) {
                 continue;
             }
-            $data[ucfirst($name)] = $property['value'];
+            if ($property['value'] instanceof \DateTime) {
+                $data[ucfirst($name)] = $property['value']->format('c');
+            }
+            else {
+                $data[ucfirst($name)] = $property['value'];
+            }
         }
 
         return $data;

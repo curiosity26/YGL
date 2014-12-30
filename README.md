@@ -73,6 +73,7 @@ response code (via <code>YGLResponse::getResponseCode()</code>) and the error me
 (via <code>YGLResponse::getBody()</code>). If you need more details about the raw response, you can get the 
 HTTPResponse object by calling <code>YGLResponse::getRawResponse()</code>.
 
+<h3>Properties</h3>
 When requesting a list of properties, the library has a default limit of 20. You can override this limit by passing a 
 new limit as the second parameter of the getProperties function. You can also page ahead by passing the page number of
 results as the third parameter. Pages start at 0.
@@ -88,6 +89,7 @@ results as the third parameter. Pages start at 0.
 ?>
 ```
 
+<h3>Leads</h3>
 Using a YGLProperty object, you can easily get leads directly from the object. Or you can pass the Property back into
 a YGLClient object (same or different) to return leads.
 
@@ -128,18 +130,25 @@ The API allows new leads to be posted. The YGL PHP SDK makes this process very s
         $response = $property->addLead($lead); 
 ?>
 ```
-
-The same process is available for querying Tasks. The YGL API currently doesn't allow for new Tasks to be created via
-the API but the documentation online claims they will.
+<h3>Tasks</h3>
+The same process is available for querying and posting Tasks. 
 
 ```PHP
 <?php
     $tasks = $lead->getTasks();
     // Get a single task by Id
     $task = $lead->getTasks($taskId);
+    // Post a new Task. The following fields are required
+    $new_task = new YGLTask();
+    $new_task->taskTitle = 'My new task';
+    $new_task->taskTypeId = 24; // Mail
+    $new_task->follupDate = '01/20/2015';
+    $saved_task = $lead->addTask($new_task);
+    print $new_task->id; // prints saved task's new id
 ?>
 ```
 
+<h3>References</h3>
 You can also get any of the reference functions that can be used with a request via the client as well. For all References,
 a subscription ID can be passed as the first variable. Defaultly the subscription ID is 0, meaning all shared values.
 
@@ -156,6 +165,7 @@ search to find a Reference by Id or Name.
 ?>
 ```
 
+<h3>Users</h3>
 The API can also return a list of users, though currently you can't get a specific user by an ID. This library is built
 to allow getting a User by its ID, but currently the system <code>FALSE</code>, regardless. It's most likely possible to
 use OData, but it hasn't been tested.
