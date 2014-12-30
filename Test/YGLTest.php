@@ -78,18 +78,6 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
          $this->assertEquals($lead->id, $get_lead->id);
          $this->assertEquals($lead->primaryContact->id, $get_lead->primaryContact->id);
 
-        // Get By Expansion Query
-
-        $expand = new \ODataQuery\Expand\ODataQueryExpandCollection(array(
-          new \ODataQuery\Expand\ODataQueryExpand('FirstName',
-            new \ODataQuery\Filter\Operators\Logical\ODataEqualsOperator('Bob'))),
-          new \ODataQuery\Expand\ODataQueryExpand('LastName',
-            new \ODataQuery\Filter\Operators\Logical\ODataEqualsOperator('Jones')));
-
-        $query = new \ODataQuery\ODataResource();
-        $query->expand($expand);
-        $get_leads = $lead->getProperty()->getLeads(NULL, $query);
-        $this->assertNotEmpty($get_leads);
         return $lead;
     }
 
@@ -198,7 +186,15 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
         $property = $users->getProperty();
         $get_user = $property->getUsers($user->id);
         $this->assertEquals($user->id,$get_user->id);
-        $this->assertEquals($user->userName, $get_user->userName);
+        $this->assertEquals($user->firstName.' '.$user->lastName, $get_user->firstName.' '.$get_user->lastName);
+
+        $filter = new \ODataQuery\Filter\Operators\Logical\ODataEqualsOperator('FirstName', $user->firstName);
+        $query = new \ODataQuery\ODataResource($filter->_and(new
+        \ODataQuery\Filter\Operators\Logical\ODataEqualsOperator('LastName', 'A')));
+        $get_user = $property->getUsers(NULL, $query);
+
+        $this->assertEquals($user->id,$get_user->id);
+        $this->assertEquals($user->firstName.' '.$user->lastName, $get_user->firstName.' '.$get_user->lastName);
     }
     */
     /**

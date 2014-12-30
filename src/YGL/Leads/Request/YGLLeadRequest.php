@@ -21,11 +21,10 @@ class YGLLeadRequest extends YGLCollectionRequest
 
     public function __construct($clientToken = null, YGLProperty $property = null, $id = null,
                                 ODataResourceInterface $query = null) {
-        parent::__construct($clientToken, $query);
         if (isset($property)) {
             $this->setProperty($property);
         }
-        $this->id($id);
+        parent::__construct($clientToken, $id, $query);
     }
 
     public function id($id = null)

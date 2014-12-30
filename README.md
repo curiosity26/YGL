@@ -140,35 +140,6 @@ the API but the documentation online claims they will.
 ?>
 ```
 
-The last parameter of any GET request for the client allows for an OData query to help refine the response. For more
-information on OData see http://www.odata.org/. For more information on the ODataQuery-PHP library used in this project
-see http://curiosity26.github.io/ODataQuery-PHP/.
-
-Here's an example of how you can pass an ODataResource object to return leads where the FirstName property of the lead 
-is 'Bob' and the LastName of the lead is 'Jones'. All methods below return a YGLLeadCollection or YGLLead on success 
-or a YGLResponse on failure. If the system doesn't support an OData call (YGL doesn't support $count, for instance) or
-the request is malformed (trying to use a string property as a date or integer) then you'll receive a YGLResponse with
-a response code of 400 (Bad Request).
-
-```PHP
-<?php
-    // Get By Expansion Query
-    $expand = new ODataQueryExpandCollection(array(
-      new ODataQueryExpand('FirstName',
-        new ODataEqualsOperator('Bob'))),
-      new ODataQueryExpand('LastName',
-        new ODataEqualsOperator('Jones')));
-    $query = new ODataResource();
-    $query->expand($expand);
-    // You can use the $property as used above
-    $property->getLeads(NULL, $query);
-    // Or you can get the Property from another Lead already returned
-    $leads = $lead->getProperty()->getLeads(NULL, $query);
-    // Or you can get the Property from the Lead of a Task
-    $task->getLead()->getProperty()->getLeads(NULL, $query);
-?>
-```
-
 You can also get any of the reference functions that can be used with a request via the client as well. For all References,
 a subscription ID can be passed as the first variable. Defaultly the subscription ID is 0, meaning all shared values.
 
@@ -186,7 +157,7 @@ search to find a Reference by Id or Name.
 ```
 
 The API can also return a list of users, though currently you can't get a specific user by an ID. This library is built
-to allow getting a User by its ID, but currently the system returns all users, regardless. It's most likely] possible to
+to allow getting a User by its ID, but currently the system <code>FALSE</code>, regardless. It's most likely possible to
 use OData, but it hasn't been tested.
 
 ```PHP

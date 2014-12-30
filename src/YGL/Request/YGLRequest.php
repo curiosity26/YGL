@@ -32,6 +32,10 @@ abstract class YGLRequest extends ODataResourcePath
             $this->setClient($clientToken);
         }
 
+        if (isset($query)) {
+            $this->setQuery($query);
+        }
+
         $this->headers['Host'] = isset($_SERVER['HTTP_HOST'])
             ? $_SERVER['HTTP_HOST'] : 'localhost';
         $this->headers['Accept'] = 'application/json';
@@ -46,7 +50,6 @@ abstract class YGLRequest extends ODataResourcePath
         $this->filter($query->filter());
         $this->expand($query->expand());
         $this->orderBy($query->orderBy());
-
         return $this;
     }
 
@@ -93,10 +96,9 @@ abstract class YGLRequest extends ODataResourcePath
     {
         $params = array();
 
-        if (!isset($this->data)) {
+        if (empty($this->data)) {
             $params = parent::build();
         }
-
         return $params;
     }
 
