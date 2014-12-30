@@ -16,11 +16,7 @@
   "support": {
     "issues": "https://github.com/curiosity26/YGL/issues",
     "wiki": "https://github.com/curiosity26/YGL/wiki",
-    "source": "https://github.com/curiosity26/YGL"
-  },
-  "source": {
-    "type": "git",
-    "url": "https://github.com/curiosity26/YGL.git"
+    "source": "https://github.com/curiosity26/YGL.git"
   },
   "autoload" : {
     "psr-4": {
