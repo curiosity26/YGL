@@ -40,10 +40,11 @@ class YGLProperty extends YGLJsonObject
         parent::__construct((array)$values, $client);
     }
 
-    public function getLeads($id = null, ODataResourceInterface $query = null)
+    public function getLeads($id = null, $limit = 20, $page = 0,
+      ODataResourceInterface $query = null)
     {
         if (($client = $this->getClient()) && $client instanceof YGLClient) {
-            return $client->getLeads($this, $id, $query);
+            return $client->getLeads($this, $id, $limit, $page, $query);
         }
 
         return false;
