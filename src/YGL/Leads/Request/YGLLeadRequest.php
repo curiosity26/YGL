@@ -10,6 +10,7 @@ namespace YGL\Leads\Request;
 
 
 use ODataQuery\ODataResourceInterface;
+use ODataQuery\Pager\ODataQueryPager;
 use YGL\Properties\YGLProperty;
 use YGL\Request\YGLCollectionRequest;
 
@@ -19,12 +20,16 @@ class YGLLeadRequest extends YGLCollectionRequest
     protected $property;
     protected $id;
 
-    public function __construct($clientToken = null, YGLProperty $property = null, $id = null,
-                                ODataResourceInterface $query = null) {
+    public function __construct($clientToken = null,
+                                YGLProperty $property = null, $id = null,
+                                $limit = 20,
+                                $page = 0, ODataResourceInterface $query = null)
+    {
         if (isset($property)) {
             $this->setProperty($property);
         }
         parent::__construct($clientToken, $id, $query);
+        $this->pager(new ODataQueryPager($limit, $page));
     }
 
     public function id($id = null)

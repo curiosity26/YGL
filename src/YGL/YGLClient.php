@@ -90,9 +90,11 @@ class YGLClient
     public function getLeads(
         YGLProperty $property,
         $id = null,
+        $limit = 20,
+        $page = 0,
         ODataResourceInterface $query = null
     ) {
-        $request = new YGLLeadRequest($this, $property, $id, $query);
+        $request = new YGLLeadRequest($this, $property, $id, $limit, $page, $query);
 
         return $request->send();
     }
