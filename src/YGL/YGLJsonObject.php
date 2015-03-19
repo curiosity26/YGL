@@ -12,7 +12,7 @@ namespace YGL;
 use YGL\Leads\Address\YGLAddress;
 use YGL\Leads\Contact\YGLContact;
 use YGL\Leads\Notes\YGLLeadNotes;
-use YGL\Leads\ReferralSource\Collection\YGLReferralSourceCollection;
+use YGL\ReferralSource\Collection\YGLReferralSourceCollection;
 use YGL\Leads\Resident\YGLLeadResident;
 use YGL\Leads\YGLLead;
 use YGL\Properties\YGLProperty;
@@ -112,7 +112,7 @@ class YGLJsonObject implements \JsonSerializable
         YGLReferralSourceCollection $default = null
     ) {
         return self::customProperty(
-            'YGL\Leads\ReferralSource\Collection\YGLReferralSourceCollection',
+            'YGL\ReferralSource\Collection\YGLReferralSourceCollection',
             $default
         );
     }

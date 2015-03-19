@@ -87,4 +87,12 @@ class YGLProperty extends YGLJsonObject
 
         return false;
     }
+
+    public function getReferralSources($id = null, ODataResourceInterface $query = null) {
+        if (($client = $this->getClient()) && $client instanceof YGLClient) {
+          return $client->getReferralSources($this, $id, $query);
+        }
+
+        return false;
+    }
 } 

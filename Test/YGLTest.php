@@ -310,5 +310,13 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
         $this->assertNotEmpty($response);
     }
 
+    /**
+     * @depends testPropertiesGet
+     * @param \YGL\Properties\YGLProperty $property
+     */
+    public function testReferralSourcesGet(\YGL\Properties\YGLProperty $property) {
+        $response = $property->getReferralSources();
+        $this->assertNotEmpty($response);
+    }
 }
  

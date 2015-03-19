@@ -27,6 +27,7 @@ use YGL\Reference\LeadPriortities\Request\YGLLeadPrioritiesRequest;
 use YGL\Reference\MemoryLosses\Request\YGLMemoryLossesRequest;
 use YGL\Reference\RelationsToResident\Request\YGLRelationsToResidentRequest;
 use YGL\Reference\TaskTypes\Request\YGLTaskTypesRequest;
+use YGL\ReferralSource\Request\YGLReferralSourceRequest;
 use YGL\Tasks\Request\YGLTaskRequest;
 use YGL\Users\Request\YGLUserRequest;
 use YGL\Tasks\YGLTask;
@@ -152,6 +153,13 @@ class YGLClient
     ) {
         $request = new YGLUserRequest($this, $property, $id, $query);
 
+        return $request->send();
+    }
+
+    public function getReferralSources(YGLProperty $property,
+        $id = null,
+        ODataResourceInterface $query = null) {
+        $request = new YGLReferralSourceRequest($this, $property, $id, $query);
         return $request->send();
     }
 
