@@ -13,19 +13,19 @@ use YGL\Collection\YGLCollection;
 use YGL\YGLClient;
 
 class YGLReferralSourceCollection extends YGLCollection {
-  protected $itemValue = 'YGL\ReferralSource\YGLReferralSource';
+  protected $itemClass = 'YGL\ReferralSource\YGLReferralSource';
 
   public function __construct() {
     $args = func_get_args();
 
-    if (is_array($args[0])) {
+    if (empty($args[0]) || is_array($args[0])) {
       $client = isset($args[1]) && $args[1] instanceof YGLClient ? $args[1] : null;
-      parent::__construct($client, $args[0]);
+      $values = !empty($args[0]) && is_array($args[0]) ? $args[0] : array();
     }
     else {
       $client = isset($args[0]) && $args[0] instanceof YGLClient ? $args[0] : null;
-      $values = isset($args[1]) && is_array($args[1]) ? $args[1] : array();
-      parent::__construct($client, $values);
+      $values = !empty($args[1]) && is_array($args[1]) ? $args[1] : array();
     }
+    parent::__construct($client, $values);
   }
 } 
