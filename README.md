@@ -14,13 +14,25 @@ YouGotLeads PHP SDK - https://www.youvegotleads.com/webservices/documentation
 <h2>Installation</h2>
 <h3>As a Composer Requirement</h3>
 When developing an application which also makes use of composer, you can easily include the YGL library by adding the
-following line to your composer.json file:
+following line to your composer.json file (replace 'master-dev' with a release tag, i.e. v1.0.4, unless you want to 
+use the bleeding edge version):
 
 ```JSON
 {
-    "require": {
-        "curiosity26/yougotleads": "@stable"
-    }
+    "repositories": [
+          {
+              "type": "package",
+              "package" : {
+                    "name": "curiosity26/YGL",
+                    "version": "master-dev",
+                    "source": {
+                          "type": "git",
+                          "url": "https://github.com/curiosity26/YGL",
+                          "reference": "master-dev"
+                    }
+              }
+          }
+        ]
 }
 ```
 <h3>Via the Autoloader</h3>
@@ -85,7 +97,7 @@ results as the third parameter. Pages start at 0.
     // Overriding limits, going to 2nd page of results
     $properties = $client->getProperties(NULL, 100, 1); // returns YGLPropertyCollection unless only 1 is returned then YGLProperty
     // Or if you know the ID of your Property, the pager won't help here.
-    $property = $client->getProperties($idofmyproperty); // returns YGLProperty
+    $property = $client->getProperties($property_id); // returns YGLProperty
 ?>
 ```
 
