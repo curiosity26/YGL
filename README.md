@@ -20,19 +20,19 @@ use the bleeding edge version):
 ```JSON
 {
     "repositories": [
-          {
-              "type": "package",
-              "package" : {
-                    "name": "curiosity26/YGL",
-                    "version": "dev-master",
-                    "source": {
-                          "type": "git",
-                          "url": "https://github.com/curiosity26/YGL",
-                          "reference": "dev-master"
-                    }
-              }
-          }
-        ]
+        {
+            "type": "package",
+            "package" : {
+                "name": "curiosity26/YGL",
+                "version": "dev-master",
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/curiosity26/YGL",
+                    "reference": "dev-master"
+                }
+            }
+        }
+    ]
 }
 ```
 <h3>Via the Autoloader</h3>
