@@ -14,7 +14,7 @@ YouGotLeads PHP SDK - https://www.youvegotleads.com/webservices/documentation
 <h2>Installation</h2>
 <h3>As a Composer Requirement</h3>
 When developing an application which also makes use of composer, you can easily include the YGL library by adding the
-following line to your composer.json file (replace 'master-dev' with a release tag, i.e. v1.0.4, unless you want to 
+following line to your composer.json file (replace 'dev-master' with a release tag, i.e. v1.0.4, unless you want to 
 use the bleeding edge version):
 
 ```JSON
@@ -24,11 +24,11 @@ use the bleeding edge version):
               "type": "package",
               "package" : {
                     "name": "curiosity26/YGL",
-                    "version": "master-dev",
+                    "version": "dev-master",
                     "source": {
                           "type": "git",
                           "url": "https://github.com/curiosity26/YGL",
-                          "reference": "master-dev"
+                          "reference": "dev-master"
                     }
               }
           }
