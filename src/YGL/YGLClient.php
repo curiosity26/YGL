@@ -24,6 +24,7 @@ use YGL\Reference\CurrentLivingSituations\Request\YGLCurrentLivingSituationsRequ
 use YGL\Reference\FamilyStatuses\Request\YGLFamilyStatusesRequest;
 use YGL\Reference\FundingTypes\Request\YGLFundingTypesRequest;
 use YGL\Reference\LeadPriortities\Request\YGLLeadPrioritiesRequest;
+use YGL\Reference\LeadStatuses\Request\YGLLeadStatusRequest;
 use YGL\Reference\MemoryLosses\Request\YGLMemoryLossesRequest;
 use YGL\Reference\RelationsToResident\Request\YGLRelationsToResidentRequest;
 use YGL\Reference\TaskTypes\Request\YGLTaskTypesRequest;
@@ -215,6 +216,11 @@ class YGLClient
     public function getLeadPriorities($subscriptionId = 0, ODataResourceInterface $query = NULL) {
         $request = new YGLLeadPrioritiesRequest($this, $subscriptionId, $query);
         return $request->send();
+    }
+
+    public function getLeadStatuses($subscriptionId = 0, ODataResourceInterface $query = NULL) {
+      $request = new YGLLeadStatusRequest($this, $subscriptionId, $query);
+      return $request->send();
     }
 
     public function getMemoryLosses($subscriptionId = 0, ODataResourceInterface $query = NULL) {

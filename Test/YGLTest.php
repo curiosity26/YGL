@@ -287,6 +287,15 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
      * @depends testConnection
      * @param YGLClient $ygl
      */
+    public function testLeadStatuses(YGLClient $ygl) {
+        $response = $ygl->getLeadStatuses();
+        $this->assertNotEmpty($response);
+    }
+
+    /**
+     * @depends testConnection
+     * @param YGLClient $ygl
+     */
     public function testMemoryLossesGet(YGLClient $ygl) {
         $response = $ygl->getMemoryLosses();
         $this->assertNotEmpty($response);
