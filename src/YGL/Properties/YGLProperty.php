@@ -40,6 +40,13 @@ class YGLProperty extends YGLJsonObject
         parent::__construct((array)$values, $client);
     }
 
+  /**
+   * @param null                               $id
+   * @param int                                $limit
+   * @param int                                $page
+   * @param \ODataQuery\ODataResourceInterface $query
+   * @return bool|mixed|\YGL\Response\YGLResponse|\YGL\Leads\Collection\YGLLeadCollection
+   */
     public function getLeads($id = null, $limit = 20, $page = 0,
       ODataResourceInterface $query = null)
     {
@@ -50,6 +57,10 @@ class YGLProperty extends YGLJsonObject
         return false;
     }
 
+  /**
+   * @param \YGL\Leads\YGLLead $lead
+   * @return null|\YGL\Response\YGLResponse|\YGL\Leads\YGLLead
+   */
     public function addLead(YGLLead $lead)
     {
         $lead->setProperty($this);
@@ -60,6 +71,10 @@ class YGLProperty extends YGLJsonObject
         return null;
     }
 
+  /**
+   * @param \YGL\Leads\Collection\YGLLeadCollection $leads
+   * @return null|\YGL\Response\YGLResponse|\YGL\Leads\Collection\YGLLeadCollection
+   */
     public function addLeads(YGLLeadCollection $leads)
     {
         $leads->setProperty($this);
@@ -70,6 +85,10 @@ class YGLProperty extends YGLJsonObject
         return null;
     }
 
+  /**
+   * @param \ODataQuery\ODataResourceInterface $query
+   * @return bool|mixed|\YGL\Response\YGLResponse|\YGL\Tasks\Collection\YGLTaskCollection
+   */
     public function getTasks(ODataResourceInterface $query = null)
     {
         if (($client = $this->getClient()) && $client instanceof YGLClient) {
@@ -79,6 +98,11 @@ class YGLProperty extends YGLJsonObject
         return false;
     }
 
+  /**
+   * @param null                               $id
+   * @param \ODataQuery\ODataResourceInterface $query
+   * @return bool|mixed|\YGL\Response\YGLResponse|\YGL\Users\Collection\YGLUsersCollection
+   */
     public function getUsers($id = null, ODataResourceInterface $query = null)
     {
         if (($client = $this->getClient()) && $client instanceof YGLClient) {
@@ -88,6 +112,11 @@ class YGLProperty extends YGLJsonObject
         return false;
     }
 
+  /**
+   * @param null                               $id
+   * @param \ODataQuery\ODataResourceInterface $query
+   * @return bool|mixed|\YGL\Response\YGLResponse|\YGL\ReferralSource\Collection\YGLReferralSourceCollection
+   */
     public function getReferralSources($id = null, ODataResourceInterface $query = null) {
         if (($client = $this->getClient()) && $client instanceof YGLClient) {
           return $client->getReferralSources($this, $id, $query);

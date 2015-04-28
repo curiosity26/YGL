@@ -18,6 +18,9 @@ use YGL\YGLClient;
 use YGL\YGLJsonObject;
 
 class YGLLead extends YGLJsonObject {
+  /**
+   * @var \YGL\Properties\YGLProperty
+   */
   protected $property;
   protected $uniqueId = 'leadId';
 
@@ -50,12 +53,17 @@ class YGLLead extends YGLJsonObject {
       'secondaryContact'   => self::contactProperty(),
       'secondFundingType'  => self::integerProperty(),
       'userName'           => self::stringProperty(10),
-      'veteran'            => self::stringProperty(1)
+      'veteran'            => self::stringProperty(1),
+      'statusId'           => self::integerProperty()
     );
 
     parent::__construct((array) $values);
   }
 
+  /**
+   * @param \YGL\YGLClient $client
+   * @return $this
+   */
   public function setClient(YGLClient $client) {
     parent::setClient($client);
     if ($this->property instanceof YGLProperty) {
@@ -73,6 +81,10 @@ class YGLLead extends YGLJsonObject {
     return $this;
   }
 
+  /**
+   * @param \YGL\Properties\YGLProperty $property
+   * @return $this
+   */
   public function setProperty(YGLProperty $property) {
     $this->property = NULL;
     if (isset($this->client)) {
@@ -82,8 +94,13 @@ class YGLLead extends YGLJsonObject {
       $this->setClient($client);
     }
     $this->property = $property;
+
+    return $this;
   }
 
+  /**
+   * @return \YGL\Properties\YGLProperty
+   */
   public function getProperty() {
     return $this->property;
   }
@@ -104,6 +121,9 @@ class YGLLead extends YGLJsonObject {
     return $this;
   }
 
+  /**
+   * @return null|\YGL\ReferralSource\Collection\YGLReferralSourceCollection
+   */
   public function getReferralSources() {
     return $this->referralSources;
   }
@@ -133,9 +153,7 @@ class YGLLead extends YGLJsonObject {
     $tasks->setLead($this);
     if (($client = $this->getClient(
       )) && $client instanceof YGLClient && ($property = $this->getProperty(
-      )) &&
-      $property instanceof YGLProperty
-    ) {
+      )) && $property instanceof YGLProperty) {
       return $client->addTasks($property, $this, $tasks);
     }
 
