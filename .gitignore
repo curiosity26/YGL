@@ -52,4 +52,4 @@ crashlytics-build.properties
 /vendor/
 
 #PHPUnit
-/Test/*.xml
+/Test/configuration.xml
