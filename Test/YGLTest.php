@@ -6,23 +6,19 @@
  * Time: 9:05 PM
  */
 
-// Test Encryption: eWdsQXBpVGVzdDE6cGFzc3dvcmQ=
-// Test User = yglApiTest1
-// Test Password = password
-
 use \YGL\YGLClient;
 
 class YGLTest extends \PHPUnit_Framework_TestCase {
-    private $accessToken = 'eWdsQXBpVGVzdDE6cGFzc3dvcmQ=';
 
     /**
      * @return \YGL\YGLClient
      */
     public function testConnection() {
-        $ygl = new YGLClient($this->accessToken);
+        $ygl = new YGLClient($_ENV['accesstoken']);
         $request = $this->getMockForAbstractClass('\YGL\Request\YGLRequest', array($ygl));
         $request->setFunction('properties');
         $response = $request->send();
+      var_dump($response);
         $this->assertTrue($response->isSuccess());
         return $ygl;
     }
