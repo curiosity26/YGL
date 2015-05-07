@@ -18,7 +18,6 @@ class YGLTest extends \PHPUnit_Framework_TestCase {
         $request = $this->getMockForAbstractClass('\YGL\Request\YGLRequest', array($ygl));
         $request->setFunction('properties');
         $response = $request->send();
-      var_dump($response);
         $this->assertTrue($response->isSuccess());
         return $ygl;
     }
